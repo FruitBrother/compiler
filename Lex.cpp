@@ -1,0 +1,14 @@
+keyword	int
+identifier	main
+delimiter	(
+delimiter	)
+delimiter	{
+keyword	int
+identifier	abc123
+operator	=
+const	12
+delimiter	;
+keyword	return
+const	0
+delimiter	;
+delimiter	}

@@ -1,0 +1,35 @@
+S -> int main ( ) { MAIN
+MAIN -> PROGRAM END
+MAIN -> END
+PROGRAM -> PROGRAM STATEMENT
+PROGRAM -> STATEMENT
+PROGRAM -> PROGRAM EXP
+PROGRAM -> EXP
+PROGRAM -> PROGRAM BLOCK
+PROGRAM -> BLOCK
+PROGRAM -> PROGRAM IFBLOCK
+PROGRAM -> IFBLOCK
+PROGRAM -> PROGRAM WHILEBLOCK
+PROGRAM -> WHILEBLOCK
+EXP -> identifier operator identifier operator identifier SEMICOLON
+EXP -> EXP identifier operator identifier operator identifier SEMICOLON
+EXP -> identifier operator identifier SEMICOLON
+EXP -> EXP identifier operator identifier SEMICOLON
+STATEMENT -> VARLIST SEMICOLON
+SEMICOLON -> ;
+VARLIST -> int identifier
+VARLIST -> VARLIST , identifier
+VARLIST -> char identifier
+VARLIST -> VARLIST , identifier
+VARLIST -> float identifier
+VARLIST -> VARLIST , identifier
+BLOCK -> { EXP }
+JUDGE -> identifier operator identifier
+JUDGE -> JUDGE operator identifier
+WHILEBLOCK -> WHILECAUSE BLOCK
+WHILECAUSE -> while ( JUDGE )
+IFCAUSE -> if ( JUDGE )
+IFBLOCK -> IFCAUSE BLOCK
+IFBLOCK -> ELSECAUSE BLOCK
+ELSECAUSE -> IFCAUSE BLOCK else
+END -> return const ; }

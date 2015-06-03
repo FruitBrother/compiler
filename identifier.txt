@@ -1,0 +1,2 @@
+S->_A|aA|bA|cA|dA|eA|fA|gA|hA|iA|jA|kA|lA|mA|nA|oA|pA|qA|rA|sA|tA|uA|vA|wA|xA|yA|zA
+A->_A|aA|bA|cA|dA|eA|fA|gA|hA|iA|jA|kA|lA|mA|nA|oA|pA|qA|rA|sA|tA|uA|vA|wA|xA|yA|zA|0A|1A|2A|3A|4A|5A|6A|7A|8A|9A|@
