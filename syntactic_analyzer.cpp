@@ -1,21 +1,35 @@
-/***********************************************
-*FileName:   syntactic_analyzer.cpp
-*Author:     aaronzark/吴震
-*Path:       /C/Users/吴震/Desktop/编译原理课设/My/compiler/syntactic_analyzer.cpp 
-***********************************************/
 #include <iostream>
 #include <fstream>
 #include <sstream>
 #include <algorithm>
 #include <vector>
-#include <stack>
 #include <map>
 #include <set>
-
+#include <list>
 using namespace std;
+template< typename T, class C = std::list<T> >
+class stack{
+public:
+    typedef typename C::iterator iterator;
+    iterator begin(){return cc.begin();}
+    iterator end() {return cc.end();}
+    void push(const T& vaule){ cc.push_front(vaule); }
+    void pop(){cc.pop_front();}
+    T top(){return cc.front(); }
+private:
+    C cc;
+};
+
 const int state_maxn = 300;
 const int guiyue = 1<<20;
 const int acc = 1<<31-1;
+struct Lex
+{
+	string word;
+	string type;
+	Lex(string word, string type): word(word), type(type){}
+};
+vector<Lex> lex;
 
 struct Node
 {
@@ -48,10 +62,10 @@ struct Node
 
 	bool operator == (Node const &other) const
 	{
-		if (other.left == left && other.right == right && 
+		if (other.left == left && other.right == right &&
 			other.search == search && other.position == position)
 			return true;
-		else  
+		else
 			return false;
 	}
 };
@@ -62,6 +76,7 @@ class LR1
 		map<string, int> Action[state_maxn], Goto[state_maxn];
 		vector<set<Node> > I;
 		vector<Node> init;
+		//vn 语法变量 vt 终结符 vnt V&T
 		set<string> vn, vt, vnt;
 
 		void Init()
@@ -83,7 +98,7 @@ class LR1
 				while (stringcin >> tmp)
 				{
 					right.push_back(tmp);
-					if (tmp == "@")
+					if (tmp == "@")//@ is e
 						continue;
 					vnt.insert(tmp);
 					if (tmp[0] >= 'A' && tmp[0] <= 'Z')
@@ -91,7 +106,7 @@ class LR1
 					else
 						vt.insert(tmp);
 				}
-				init.push_back(Node(left, right, search_tmp, 0));				
+				init.push_back(Node(left, right, search_tmp, 0));
 			}
 			vt.insert("#"), vnt.insert("#");
 			file_in.close();
@@ -115,7 +130,7 @@ class LR1
 			}
 		}
 
-		
+
 		set<string> dfs(vector<string> &afterset)
 		{
 			set<string> firstset;
@@ -162,8 +177,8 @@ class LR1
 			}
 			return firstset;
 		}
-		
-		
+
+
 		set<Node> Derive(Node &pre)
 		{
 			set<Node> derivation;
@@ -198,9 +213,10 @@ class LR1
 			}
 			return derivation;
 		}
-	
+
 		void getProjectset()
 		{
+            ofstream out("table.txt");
 			Node accept = init[0];
 			accept.position++;
 			set<Node> I0 = Derive(init[0]);
@@ -220,28 +236,28 @@ class LR1
 					break;
 			}
 
-			/*
-			cout<<"I0:\n";
+/* PRINTI0*/
+			out<<"I0:\n";
 			for (set<Node>::iterator iter = I0.begin(); iter != I0.end(); iter++)
 			{
-				cout<<iter->left<<"->";
+				out<<iter->left<<"->";
 				for (int i = 0; i < iter->right.size(); i++)
 				{
 					if (iter->position == i)
-						cout<<". ";
-					cout<<iter->right[i]<<" ";
+						out<<". ";
+					out<<iter->right[i]<<" ";
 				}
 
 				if (iter->position == iter->right.size())
-					cout<<".";
-				cout<<",";
+					out<<".";
+				out<<",";
 				for (set<string>::iterator it = iter->search.begin(); it != iter->search.end(); it++)
-					cout<<'/'<<*it;
-				cout<<endl;
+					out<<'/'<<*it;
+				out<<endl;
 			}
-			cout<<endl;
-			*/
-			///////////////////
+			out<<endl;
+//PRINTI0
+/*INIT I1 - In*/
 			for (set<Node>::iterator iter = I0.begin(); iter != I0.end(); iter++)
 			{
 				if (iter->right[0] == "@")
@@ -257,18 +273,21 @@ class LR1
 				}
 			}
 			I.push_back(I0);
+//INIT I1 - In
 			for (int i = 0; i < I.size(); i++)
 			{
 				set<Node> iset = I[i];
+				//vnt为待填字母集合 *iter
 				for (set<string>::iterator iter = vnt.begin(); iter != vnt.end(); iter++)
 				{
-					set<Node> niset;
+					set<Node> niset;//CLOSURE()
+/* createNewCLOSURE*/
 					for (set<Node>:: iterator it = iset.begin(); it != iset.end(); it++)
 					{
 						if (it->position < it->right.size() && (it->right[it->position]) == (*iter))
 							niset.insert(Node(it->left,it->right, it->search, it->position+1));
 					}
-					
+
 					while (true)
 					{
 						int len = niset.size();
@@ -286,7 +305,8 @@ class LR1
 					}
 					if (niset.empty())
 						continue;
-					
+//createNewCLOSURE
+/* isNEW*/
 					bool isnew = true;
 					for (int j = 0; j < I.size(); j++)
 					{
@@ -300,31 +320,31 @@ class LR1
 							break;
 						}
 					}
-
-					/*
+//isNEW
+/* PRINT*/
 					if (isnew)
 					{
-						cout<<"I"<<I.size()<<':'<<endl;
+						out<<"I"<<I.size()<<':'<<endl;
 						for (set<Node>::iterator ite = niset.begin(); ite != niset.end(); ite++)
 						{
-							cout<<ite->left<<"->";
+							out<<ite->left<<"->";
 							for (int i = 0; i < ite->right.size(); i++)
 							{
 								if (ite->position == i)
-									cout<<". ";
-								cout<<ite->right[i]<<" ";
+									out<<". ";
+								out<<ite->right[i]<<" ";
 							}
 							if (ite->position == ite->right.size())
-								cout<<'.';
-							cout<<",";
+								out<<'.';
+							out<<",";
 							for(set<string>::iterator t = ite->search.begin(); t != ite->search.end(); t++)
-								cout<<'/'<<*t;
-							cout<<endl;
+								out<<'/'<<*t;
+							out<<endl;
 						}
-						cout<<endl;
+						out<<endl;
 					}
-					*/
-
+//PRINT
+/* ACTION AND GOTO*/
 					if (isnew)
 					{
 						I.push_back(niset);
@@ -351,9 +371,10 @@ class LR1
 							}
 						}
 					}
+//ACTION AND GOTO
 				}
-
 			}
+			out.close();
 		}
 
 		LR1()
@@ -361,47 +382,70 @@ class LR1
 			Init();
 			getProjectset();
 		}
-		
+        void printStack(stack<string> s ,ofstream &out){
+            for (stack<string>::iterator i = --s.end() ; i != s.begin(); i--){
+                out<<*i<<' ';
+            }
+            out<<*(s.begin())<<endl;
+        }
+        void printVector(vector<Lex> s,ofstream &out){
+            for (vector<Lex>::iterator i = --s.end(); i!= s.begin(); i--){
+                out<<(*i).word<<' ';
+            }
+            out<<(*s.begin()).word<<endl;
+        }
 		void judge()
 		{
-			freopen("CON", "w", stdout);
+			ofstream out("process.txt");
 			stack<int> status;
 			stack<string> symbol;
 			status.push(0);
+			int step = 0;
 			while (lex.size() > 0)
 			{
+			    out<<"-------------"<<step++<<"----------------"<<endl;
+			    printVector(lex,out);
 				Lex frolex = lex.back();
+				out<<frolex.word<<" :";
 				int topsta = status.top();
 				if (Action[topsta][frolex.word] == acc)
 				{
-					cout<<"Yeah!\n";
+					out<<"Yeah!\n";
 					return;
 				}
 				if (Action[topsta][frolex.word] != 0 || Action[topsta][frolex.type] != 0)
 				{
 					int number = max(Action[topsta][frolex.word], Action[topsta][frolex.type]);
+					out<<number<<"\t\t";
+					//reduce
 					if (number >= guiyue)
 					{
+					    out<<"\nreduce: ";
 						int r = number - guiyue;
 						Node pre = init[r];
-
+						out<<pre.left<<"->";
 						if (pre.right[0] != "@")
 						{
-							for (int i = 0; i < pre.right.size(); i++)
-								symbol.pop(), status.pop();
+							for (int i = 0; i < pre.right.size(); i++){
+								symbol.pop(); status.pop();
+                                out<<pre.right[i]<<' ';
+							}
 						}
+						out<<endl;
 
 						symbol.push(pre.left);
 						if (Goto[status.top()][pre.left] == 0)
 						{
-							cout<<"NO!\n";
+							out<<"NO!\n";
 							return;
 						}
 						else
 							status.push(Goto[status.top()][pre.left]);
 					}
+					//move in
 					else
 					{
+					    out<<"\nmove in: ";
 						lex.pop_back();
 						symbol.push(frolex.word);
 						status.push(number);
@@ -409,22 +453,19 @@ class LR1
 				}
 				else
 				{
-					cout<<"NO!\n";
+					out<<"NO!\n";
+					out<<"status: "<<topsta<<" "<<frolex.word<<" "<<frolex.type<<endl;
 					return;
 				}
+                printStack(symbol,out);
+                out<<"-------------end----------------"<<endl<<endl;
 			}
-			fclose(stdout);
+			out.close();
 		}
-		
+
 };
 
-struct Lex
-{
-	string word;
-	string type;
-	Lex(string word, string type): word(word), type(type){} 
-};
-vector<Lex> lex;
+
 
 int main()
 {
@@ -438,9 +479,10 @@ int main()
 		swap(lex[i], lex[j]);
 	fclose(stdin);
 
-	// for (int i = 0; i < lex.size(); i++)
- //    	cout<<lex[i].type<' '<<lex[i].word<<endl;
+	//for (int i = 0; i < lex.size(); i++)
+    // 	cout<<lex[i].type<<' '<<lex[i].word<<endl;
+    //lr1.printInit();
 	lr1.judge();
-	
+
 	return 0;
 }
