@@ -1,0 +1,893 @@
+I0:
+S->. int identifier ( ) { MAIN ,/#
+S'->. S ,/#
+
+I1:
+S'->S .,/#
+
+I2:
+S->int . identifier ( ) { MAIN ,/#
+
+I3:
+S->int identifier . ( ) { MAIN ,/#
+
+I4:
+S->int identifier ( . ) { MAIN ,/#
+
+I5:
+S->int identifier ( ) . { MAIN ,/#
+
+I6:
+BLOCK->. { EXP } ,/char/float/int
+BLOCK->. { EXP } ,/identifier
+BLOCK->. { EXP } ,/if
+BLOCK->. { EXP } ,/return
+BLOCK->. { EXP } ,/while
+BLOCK->. { EXP } ,/{
+ELSECAUSE->. IFCAUSE BLOCK else ,/{
+END->. return const ; } ,/#
+EXP->. identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier SEMICOLON ,/if
+EXP->. identifier operator identifier SEMICOLON ,/return
+EXP->. identifier operator identifier SEMICOLON ,/while
+EXP->. identifier operator identifier SEMICOLON ,/{
+EXP->. EXP identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier SEMICOLON ,/if
+EXP->. EXP identifier operator identifier SEMICOLON ,/return
+EXP->. EXP identifier operator identifier SEMICOLON ,/while
+EXP->. EXP identifier operator identifier SEMICOLON ,/{
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/{
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/{
+IFBLOCK->. ELSECAUSE BLOCK ,/char/float/int
+IFBLOCK->. ELSECAUSE BLOCK ,/identifier
+IFBLOCK->. ELSECAUSE BLOCK ,/if
+IFBLOCK->. ELSECAUSE BLOCK ,/return
+IFBLOCK->. ELSECAUSE BLOCK ,/while
+IFBLOCK->. ELSECAUSE BLOCK ,/{
+IFBLOCK->. IFCAUSE BLOCK ,/char/float/int
+IFBLOCK->. IFCAUSE BLOCK ,/identifier
+IFBLOCK->. IFCAUSE BLOCK ,/if
+IFBLOCK->. IFCAUSE BLOCK ,/return
+IFBLOCK->. IFCAUSE BLOCK ,/while
+IFBLOCK->. IFCAUSE BLOCK ,/{
+IFCAUSE->. if ( JUDGE ) ,/{
+MAIN->. END ,/#
+MAIN->. PROGRAM END ,/#
+PROGRAM->. BLOCK ,/char/float/int
+PROGRAM->. BLOCK ,/identifier
+PROGRAM->. BLOCK ,/if
+PROGRAM->. BLOCK ,/return
+PROGRAM->. BLOCK ,/while
+PROGRAM->. BLOCK ,/{
+PROGRAM->. EXP ,/char/float/int
+PROGRAM->. EXP ,/identifier
+PROGRAM->. EXP ,/if
+PROGRAM->. EXP ,/return
+PROGRAM->. EXP ,/while
+PROGRAM->. EXP ,/{
+PROGRAM->. IFBLOCK ,/char/float/int
+PROGRAM->. IFBLOCK ,/identifier
+PROGRAM->. IFBLOCK ,/if
+PROGRAM->. IFBLOCK ,/return
+PROGRAM->. IFBLOCK ,/while
+PROGRAM->. IFBLOCK ,/{
+PROGRAM->. STATEMENT ,/char/float/int
+PROGRAM->. STATEMENT ,/identifier
+PROGRAM->. STATEMENT ,/if
+PROGRAM->. STATEMENT ,/return
+PROGRAM->. STATEMENT ,/while
+PROGRAM->. STATEMENT ,/{
+PROGRAM->. WHILEBLOCK ,/char/float/int
+PROGRAM->. WHILEBLOCK ,/identifier
+PROGRAM->. WHILEBLOCK ,/if
+PROGRAM->. WHILEBLOCK ,/return
+PROGRAM->. WHILEBLOCK ,/while
+PROGRAM->. WHILEBLOCK ,/{
+PROGRAM->. PROGRAM BLOCK ,/char/float/int
+PROGRAM->. PROGRAM BLOCK ,/identifier
+PROGRAM->. PROGRAM BLOCK ,/if
+PROGRAM->. PROGRAM BLOCK ,/return
+PROGRAM->. PROGRAM BLOCK ,/while
+PROGRAM->. PROGRAM BLOCK ,/{
+PROGRAM->. PROGRAM EXP ,/char/float/int
+PROGRAM->. PROGRAM EXP ,/identifier
+PROGRAM->. PROGRAM EXP ,/if
+PROGRAM->. PROGRAM EXP ,/return
+PROGRAM->. PROGRAM EXP ,/while
+PROGRAM->. PROGRAM EXP ,/{
+PROGRAM->. PROGRAM IFBLOCK ,/char/float/int
+PROGRAM->. PROGRAM IFBLOCK ,/identifier
+PROGRAM->. PROGRAM IFBLOCK ,/if
+PROGRAM->. PROGRAM IFBLOCK ,/return
+PROGRAM->. PROGRAM IFBLOCK ,/while
+PROGRAM->. PROGRAM IFBLOCK ,/{
+PROGRAM->. PROGRAM STATEMENT ,/char/float/int
+PROGRAM->. PROGRAM STATEMENT ,/identifier
+PROGRAM->. PROGRAM STATEMENT ,/if
+PROGRAM->. PROGRAM STATEMENT ,/return
+PROGRAM->. PROGRAM STATEMENT ,/while
+PROGRAM->. PROGRAM STATEMENT ,/{
+PROGRAM->. PROGRAM WHILEBLOCK ,/char/float/int
+PROGRAM->. PROGRAM WHILEBLOCK ,/identifier
+PROGRAM->. PROGRAM WHILEBLOCK ,/if
+PROGRAM->. PROGRAM WHILEBLOCK ,/return
+PROGRAM->. PROGRAM WHILEBLOCK ,/while
+PROGRAM->. PROGRAM WHILEBLOCK ,/{
+STATEMENT->. VARLIST SEMICOLON ,/char/float/int
+STATEMENT->. VARLIST SEMICOLON ,/identifier
+STATEMENT->. VARLIST SEMICOLON ,/if
+STATEMENT->. VARLIST SEMICOLON ,/return
+STATEMENT->. VARLIST SEMICOLON ,/while
+STATEMENT->. VARLIST SEMICOLON ,/{
+VARLIST->. char identifier ,/,
+VARLIST->. char identifier ,/;
+VARLIST->. float identifier ,/,
+VARLIST->. float identifier ,/;
+VARLIST->. int identifier ,/,
+VARLIST->. int identifier ,/;
+VARLIST->. VARLIST , identifier ,/,
+VARLIST->. VARLIST , identifier ,/;
+WHILEBLOCK->. WHILECAUSE BLOCK ,/char/float/int
+WHILEBLOCK->. WHILECAUSE BLOCK ,/identifier
+WHILEBLOCK->. WHILECAUSE BLOCK ,/if
+WHILEBLOCK->. WHILECAUSE BLOCK ,/return
+WHILEBLOCK->. WHILECAUSE BLOCK ,/while
+WHILEBLOCK->. WHILECAUSE BLOCK ,/{
+WHILECAUSE->. while ( JUDGE ) ,/{
+S->int identifier ( ) { . MAIN ,/#
+
+I7:
+PROGRAM->BLOCK .,/char/float/int
+PROGRAM->BLOCK .,/identifier
+PROGRAM->BLOCK .,/if
+PROGRAM->BLOCK .,/return
+PROGRAM->BLOCK .,/while
+PROGRAM->BLOCK .,/{
+
+I8:
+BLOCK->. { EXP } ,/char/float/int
+BLOCK->. { EXP } ,/identifier
+BLOCK->. { EXP } ,/if
+BLOCK->. { EXP } ,/return
+BLOCK->. { EXP } ,/while
+BLOCK->. { EXP } ,/{
+IFBLOCK->ELSECAUSE . BLOCK ,/char/float/int
+IFBLOCK->ELSECAUSE . BLOCK ,/identifier
+IFBLOCK->ELSECAUSE . BLOCK ,/if
+IFBLOCK->ELSECAUSE . BLOCK ,/return
+IFBLOCK->ELSECAUSE . BLOCK ,/while
+IFBLOCK->ELSECAUSE . BLOCK ,/{
+
+I9:
+MAIN->END .,/#
+
+I10:
+EXP->EXP . identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier SEMICOLON ,/if
+EXP->EXP . identifier operator identifier SEMICOLON ,/return
+EXP->EXP . identifier operator identifier SEMICOLON ,/while
+EXP->EXP . identifier operator identifier SEMICOLON ,/{
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/{
+PROGRAM->EXP .,/char/float/int
+PROGRAM->EXP .,/identifier
+PROGRAM->EXP .,/if
+PROGRAM->EXP .,/return
+PROGRAM->EXP .,/while
+PROGRAM->EXP .,/{
+
+I11:
+PROGRAM->IFBLOCK .,/char/float/int
+PROGRAM->IFBLOCK .,/identifier
+PROGRAM->IFBLOCK .,/if
+PROGRAM->IFBLOCK .,/return
+PROGRAM->IFBLOCK .,/while
+PROGRAM->IFBLOCK .,/{
+
+I12:
+BLOCK->. { EXP } ,/char/float/int
+BLOCK->. { EXP } ,/else
+BLOCK->. { EXP } ,/identifier
+BLOCK->. { EXP } ,/if
+BLOCK->. { EXP } ,/return
+BLOCK->. { EXP } ,/while
+BLOCK->. { EXP } ,/{
+ELSECAUSE->IFCAUSE . BLOCK else ,/{
+IFBLOCK->IFCAUSE . BLOCK ,/char/float/int
+IFBLOCK->IFCAUSE . BLOCK ,/identifier
+IFBLOCK->IFCAUSE . BLOCK ,/if
+IFBLOCK->IFCAUSE . BLOCK ,/return
+IFBLOCK->IFCAUSE . BLOCK ,/while
+IFBLOCK->IFCAUSE . BLOCK ,/{
+
+I13:
+S->int identifier ( ) { MAIN .,/#
+
+I14:
+BLOCK->. { EXP } ,/char/float/int
+BLOCK->. { EXP } ,/identifier
+BLOCK->. { EXP } ,/if
+BLOCK->. { EXP } ,/return
+BLOCK->. { EXP } ,/while
+BLOCK->. { EXP } ,/{
+ELSECAUSE->. IFCAUSE BLOCK else ,/{
+END->. return const ; } ,/#
+EXP->. identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier SEMICOLON ,/if
+EXP->. identifier operator identifier SEMICOLON ,/return
+EXP->. identifier operator identifier SEMICOLON ,/while
+EXP->. identifier operator identifier SEMICOLON ,/{
+EXP->. EXP identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier SEMICOLON ,/if
+EXP->. EXP identifier operator identifier SEMICOLON ,/return
+EXP->. EXP identifier operator identifier SEMICOLON ,/while
+EXP->. EXP identifier operator identifier SEMICOLON ,/{
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/{
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/{
+IFBLOCK->. ELSECAUSE BLOCK ,/char/float/int
+IFBLOCK->. ELSECAUSE BLOCK ,/identifier
+IFBLOCK->. ELSECAUSE BLOCK ,/if
+IFBLOCK->. ELSECAUSE BLOCK ,/return
+IFBLOCK->. ELSECAUSE BLOCK ,/while
+IFBLOCK->. ELSECAUSE BLOCK ,/{
+IFBLOCK->. IFCAUSE BLOCK ,/char/float/int
+IFBLOCK->. IFCAUSE BLOCK ,/identifier
+IFBLOCK->. IFCAUSE BLOCK ,/if
+IFBLOCK->. IFCAUSE BLOCK ,/return
+IFBLOCK->. IFCAUSE BLOCK ,/while
+IFBLOCK->. IFCAUSE BLOCK ,/{
+IFCAUSE->. if ( JUDGE ) ,/{
+STATEMENT->. VARLIST SEMICOLON ,/char/float/int
+STATEMENT->. VARLIST SEMICOLON ,/identifier
+STATEMENT->. VARLIST SEMICOLON ,/if
+STATEMENT->. VARLIST SEMICOLON ,/return
+STATEMENT->. VARLIST SEMICOLON ,/while
+STATEMENT->. VARLIST SEMICOLON ,/{
+VARLIST->. char identifier ,/,
+VARLIST->. char identifier ,/;
+VARLIST->. float identifier ,/,
+VARLIST->. float identifier ,/;
+VARLIST->. int identifier ,/,
+VARLIST->. int identifier ,/;
+VARLIST->. VARLIST , identifier ,/,
+VARLIST->. VARLIST , identifier ,/;
+WHILEBLOCK->. WHILECAUSE BLOCK ,/char/float/int
+WHILEBLOCK->. WHILECAUSE BLOCK ,/identifier
+WHILEBLOCK->. WHILECAUSE BLOCK ,/if
+WHILEBLOCK->. WHILECAUSE BLOCK ,/return
+WHILEBLOCK->. WHILECAUSE BLOCK ,/while
+WHILEBLOCK->. WHILECAUSE BLOCK ,/{
+WHILECAUSE->. while ( JUDGE ) ,/{
+MAIN->PROGRAM . END ,/#
+PROGRAM->PROGRAM . BLOCK ,/char/float/int
+PROGRAM->PROGRAM . BLOCK ,/identifier
+PROGRAM->PROGRAM . BLOCK ,/if
+PROGRAM->PROGRAM . BLOCK ,/return
+PROGRAM->PROGRAM . BLOCK ,/while
+PROGRAM->PROGRAM . BLOCK ,/{
+PROGRAM->PROGRAM . EXP ,/char/float/int
+PROGRAM->PROGRAM . EXP ,/identifier
+PROGRAM->PROGRAM . EXP ,/if
+PROGRAM->PROGRAM . EXP ,/return
+PROGRAM->PROGRAM . EXP ,/while
+PROGRAM->PROGRAM . EXP ,/{
+PROGRAM->PROGRAM . IFBLOCK ,/char/float/int
+PROGRAM->PROGRAM . IFBLOCK ,/identifier
+PROGRAM->PROGRAM . IFBLOCK ,/if
+PROGRAM->PROGRAM . IFBLOCK ,/return
+PROGRAM->PROGRAM . IFBLOCK ,/while
+PROGRAM->PROGRAM . IFBLOCK ,/{
+PROGRAM->PROGRAM . STATEMENT ,/char/float/int
+PROGRAM->PROGRAM . STATEMENT ,/identifier
+PROGRAM->PROGRAM . STATEMENT ,/if
+PROGRAM->PROGRAM . STATEMENT ,/return
+PROGRAM->PROGRAM . STATEMENT ,/while
+PROGRAM->PROGRAM . STATEMENT ,/{
+PROGRAM->PROGRAM . WHILEBLOCK ,/char/float/int
+PROGRAM->PROGRAM . WHILEBLOCK ,/identifier
+PROGRAM->PROGRAM . WHILEBLOCK ,/if
+PROGRAM->PROGRAM . WHILEBLOCK ,/return
+PROGRAM->PROGRAM . WHILEBLOCK ,/while
+PROGRAM->PROGRAM . WHILEBLOCK ,/{
+
+I15:
+PROGRAM->STATEMENT .,/char/float/int
+PROGRAM->STATEMENT .,/identifier
+PROGRAM->STATEMENT .,/if
+PROGRAM->STATEMENT .,/return
+PROGRAM->STATEMENT .,/while
+PROGRAM->STATEMENT .,/{
+
+I16:
+SEMICOLON->. ; ,/char/float/int
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/if
+SEMICOLON->. ; ,/return
+SEMICOLON->. ; ,/while
+SEMICOLON->. ; ,/{
+STATEMENT->VARLIST . SEMICOLON ,/char/float/int
+STATEMENT->VARLIST . SEMICOLON ,/identifier
+STATEMENT->VARLIST . SEMICOLON ,/if
+STATEMENT->VARLIST . SEMICOLON ,/return
+STATEMENT->VARLIST . SEMICOLON ,/while
+STATEMENT->VARLIST . SEMICOLON ,/{
+VARLIST->VARLIST . , identifier ,/,
+VARLIST->VARLIST . , identifier ,/;
+
+I17:
+PROGRAM->WHILEBLOCK .,/char/float/int
+PROGRAM->WHILEBLOCK .,/identifier
+PROGRAM->WHILEBLOCK .,/if
+PROGRAM->WHILEBLOCK .,/return
+PROGRAM->WHILEBLOCK .,/while
+PROGRAM->WHILEBLOCK .,/{
+
+I18:
+BLOCK->. { EXP } ,/char/float/int
+BLOCK->. { EXP } ,/identifier
+BLOCK->. { EXP } ,/if
+BLOCK->. { EXP } ,/return
+BLOCK->. { EXP } ,/while
+BLOCK->. { EXP } ,/{
+WHILEBLOCK->WHILECAUSE . BLOCK ,/char/float/int
+WHILEBLOCK->WHILECAUSE . BLOCK ,/identifier
+WHILEBLOCK->WHILECAUSE . BLOCK ,/if
+WHILEBLOCK->WHILECAUSE . BLOCK ,/return
+WHILEBLOCK->WHILECAUSE . BLOCK ,/while
+WHILEBLOCK->WHILECAUSE . BLOCK ,/{
+
+I19:
+VARLIST->char . identifier ,/,
+VARLIST->char . identifier ,/;
+
+I20:
+VARLIST->float . identifier ,/,
+VARLIST->float . identifier ,/;
+
+I21:
+EXP->identifier . operator identifier SEMICOLON ,/char/float/int
+EXP->identifier . operator identifier SEMICOLON ,/identifier
+EXP->identifier . operator identifier SEMICOLON ,/if
+EXP->identifier . operator identifier SEMICOLON ,/return
+EXP->identifier . operator identifier SEMICOLON ,/while
+EXP->identifier . operator identifier SEMICOLON ,/{
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/identifier
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/if
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/return
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/while
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/{
+
+I22:
+IFCAUSE->if . ( JUDGE ) ,/{
+
+I23:
+VARLIST->int . identifier ,/,
+VARLIST->int . identifier ,/;
+
+I24:
+END->return . const ; } ,/#
+
+I25:
+WHILECAUSE->while . ( JUDGE ) ,/{
+
+I26:
+EXP->. identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier SEMICOLON ,/}
+EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier SEMICOLON ,/}
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/}
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/}
+BLOCK->{ . EXP } ,/char/float/int
+BLOCK->{ . EXP } ,/identifier
+BLOCK->{ . EXP } ,/if
+BLOCK->{ . EXP } ,/return
+BLOCK->{ . EXP } ,/while
+BLOCK->{ . EXP } ,/{
+
+I27:
+IFBLOCK->ELSECAUSE BLOCK .,/char/float/int
+IFBLOCK->ELSECAUSE BLOCK .,/identifier
+IFBLOCK->ELSECAUSE BLOCK .,/if
+IFBLOCK->ELSECAUSE BLOCK .,/return
+IFBLOCK->ELSECAUSE BLOCK .,/while
+IFBLOCK->ELSECAUSE BLOCK .,/{
+
+I28:
+EXP->EXP identifier . operator identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier . operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier . operator identifier SEMICOLON ,/if
+EXP->EXP identifier . operator identifier SEMICOLON ,/return
+EXP->EXP identifier . operator identifier SEMICOLON ,/while
+EXP->EXP identifier . operator identifier SEMICOLON ,/{
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/if
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/return
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/while
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/{
+
+I29:
+ELSECAUSE->IFCAUSE BLOCK . else ,/{
+IFBLOCK->IFCAUSE BLOCK .,/char/float/int
+IFBLOCK->IFCAUSE BLOCK .,/identifier
+IFBLOCK->IFCAUSE BLOCK .,/if
+IFBLOCK->IFCAUSE BLOCK .,/return
+IFBLOCK->IFCAUSE BLOCK .,/while
+IFBLOCK->IFCAUSE BLOCK .,/{
+
+I30:
+EXP->. identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier SEMICOLON ,/}
+EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier SEMICOLON ,/}
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. identifier operator identifier operator identifier SEMICOLON ,/}
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/}
+BLOCK->{ . EXP } ,/char/float/int
+BLOCK->{ . EXP } ,/else
+BLOCK->{ . EXP } ,/identifier
+BLOCK->{ . EXP } ,/if
+BLOCK->{ . EXP } ,/return
+BLOCK->{ . EXP } ,/while
+BLOCK->{ . EXP } ,/{
+
+I31:
+PROGRAM->PROGRAM BLOCK .,/char/float/int
+PROGRAM->PROGRAM BLOCK .,/identifier
+PROGRAM->PROGRAM BLOCK .,/if
+PROGRAM->PROGRAM BLOCK .,/return
+PROGRAM->PROGRAM BLOCK .,/while
+PROGRAM->PROGRAM BLOCK .,/{
+
+I32:
+MAIN->PROGRAM END .,/#
+
+I33:
+EXP->EXP . identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier SEMICOLON ,/if
+EXP->EXP . identifier operator identifier SEMICOLON ,/return
+EXP->EXP . identifier operator identifier SEMICOLON ,/while
+EXP->EXP . identifier operator identifier SEMICOLON ,/{
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/if
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/return
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/while
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/{
+PROGRAM->PROGRAM EXP .,/char/float/int
+PROGRAM->PROGRAM EXP .,/identifier
+PROGRAM->PROGRAM EXP .,/if
+PROGRAM->PROGRAM EXP .,/return
+PROGRAM->PROGRAM EXP .,/while
+PROGRAM->PROGRAM EXP .,/{
+
+I34:
+PROGRAM->PROGRAM IFBLOCK .,/char/float/int
+PROGRAM->PROGRAM IFBLOCK .,/identifier
+PROGRAM->PROGRAM IFBLOCK .,/if
+PROGRAM->PROGRAM IFBLOCK .,/return
+PROGRAM->PROGRAM IFBLOCK .,/while
+PROGRAM->PROGRAM IFBLOCK .,/{
+
+I35:
+PROGRAM->PROGRAM STATEMENT .,/char/float/int
+PROGRAM->PROGRAM STATEMENT .,/identifier
+PROGRAM->PROGRAM STATEMENT .,/if
+PROGRAM->PROGRAM STATEMENT .,/return
+PROGRAM->PROGRAM STATEMENT .,/while
+PROGRAM->PROGRAM STATEMENT .,/{
+
+I36:
+PROGRAM->PROGRAM WHILEBLOCK .,/char/float/int
+PROGRAM->PROGRAM WHILEBLOCK .,/identifier
+PROGRAM->PROGRAM WHILEBLOCK .,/if
+PROGRAM->PROGRAM WHILEBLOCK .,/return
+PROGRAM->PROGRAM WHILEBLOCK .,/while
+PROGRAM->PROGRAM WHILEBLOCK .,/{
+
+I37:
+VARLIST->VARLIST , . identifier ,/,
+VARLIST->VARLIST , . identifier ,/;
+
+I38:
+SEMICOLON->; .,/char/float/int
+SEMICOLON->; .,/identifier
+SEMICOLON->; .,/if
+SEMICOLON->; .,/return
+SEMICOLON->; .,/while
+SEMICOLON->; .,/{
+
+I39:
+STATEMENT->VARLIST SEMICOLON .,/char/float/int
+STATEMENT->VARLIST SEMICOLON .,/identifier
+STATEMENT->VARLIST SEMICOLON .,/if
+STATEMENT->VARLIST SEMICOLON .,/return
+STATEMENT->VARLIST SEMICOLON .,/while
+STATEMENT->VARLIST SEMICOLON .,/{
+
+I40:
+WHILEBLOCK->WHILECAUSE BLOCK .,/char/float/int
+WHILEBLOCK->WHILECAUSE BLOCK .,/identifier
+WHILEBLOCK->WHILECAUSE BLOCK .,/if
+WHILEBLOCK->WHILECAUSE BLOCK .,/return
+WHILEBLOCK->WHILECAUSE BLOCK .,/while
+WHILEBLOCK->WHILECAUSE BLOCK .,/{
+
+I41:
+VARLIST->char identifier .,/,
+VARLIST->char identifier .,/;
+
+I42:
+VARLIST->float identifier .,/,
+VARLIST->float identifier .,/;
+
+I43:
+EXP->identifier operator . identifier SEMICOLON ,/char/float/int
+EXP->identifier operator . identifier SEMICOLON ,/identifier
+EXP->identifier operator . identifier SEMICOLON ,/if
+EXP->identifier operator . identifier SEMICOLON ,/return
+EXP->identifier operator . identifier SEMICOLON ,/while
+EXP->identifier operator . identifier SEMICOLON ,/{
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/char/float/int
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/identifier
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/if
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/return
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/while
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/{
+
+I44:
+JUDGE->. JUDGE operator identifier ,/)
+JUDGE->. JUDGE operator identifier ,/operator
+JUDGE->. identifier operator identifier ,/)
+JUDGE->. identifier operator identifier ,/operator
+IFCAUSE->if ( . JUDGE ) ,/{
+
+I45:
+VARLIST->int identifier .,/,
+VARLIST->int identifier .,/;
+
+I46:
+END->return const . ; } ,/#
+
+I47:
+JUDGE->. JUDGE operator identifier ,/)
+JUDGE->. JUDGE operator identifier ,/operator
+JUDGE->. identifier operator identifier ,/)
+JUDGE->. identifier operator identifier ,/operator
+WHILECAUSE->while ( . JUDGE ) ,/{
+
+I48:
+EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier SEMICOLON ,/}
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/}
+BLOCK->{ EXP . } ,/char/float/int
+BLOCK->{ EXP . } ,/identifier
+BLOCK->{ EXP . } ,/if
+BLOCK->{ EXP . } ,/return
+BLOCK->{ EXP . } ,/while
+BLOCK->{ EXP . } ,/{
+
+I49:
+EXP->identifier . operator identifier SEMICOLON ,/identifier
+EXP->identifier . operator identifier SEMICOLON ,/}
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/identifier
+EXP->identifier . operator identifier operator identifier SEMICOLON ,/}
+
+I50:
+EXP->EXP identifier operator . identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier operator . identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator . identifier SEMICOLON ,/if
+EXP->EXP identifier operator . identifier SEMICOLON ,/return
+EXP->EXP identifier operator . identifier SEMICOLON ,/while
+EXP->EXP identifier operator . identifier SEMICOLON ,/{
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/if
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/return
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/while
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/{
+
+I51:
+ELSECAUSE->IFCAUSE BLOCK else .,/{
+
+I52:
+EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier SEMICOLON ,/}
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/}
+BLOCK->{ EXP . } ,/char/float/int
+BLOCK->{ EXP . } ,/else
+BLOCK->{ EXP . } ,/identifier
+BLOCK->{ EXP . } ,/if
+BLOCK->{ EXP . } ,/return
+BLOCK->{ EXP . } ,/while
+BLOCK->{ EXP . } ,/{
+
+I53:
+VARLIST->VARLIST , identifier .,/,
+VARLIST->VARLIST , identifier .,/;
+
+I54:
+SEMICOLON->. ; ,/char/float/int
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/if
+SEMICOLON->. ; ,/return
+SEMICOLON->. ; ,/while
+SEMICOLON->. ; ,/{
+EXP->identifier operator identifier . SEMICOLON ,/char/float/int
+EXP->identifier operator identifier . SEMICOLON ,/identifier
+EXP->identifier operator identifier . SEMICOLON ,/if
+EXP->identifier operator identifier . SEMICOLON ,/return
+EXP->identifier operator identifier . SEMICOLON ,/while
+EXP->identifier operator identifier . SEMICOLON ,/{
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/char/float/int
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/identifier
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/if
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/return
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/while
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/{
+
+I55:
+JUDGE->JUDGE . operator identifier ,/)
+JUDGE->JUDGE . operator identifier ,/operator
+IFCAUSE->if ( JUDGE . ) ,/{
+
+I56:
+JUDGE->identifier . operator identifier ,/)
+JUDGE->identifier . operator identifier ,/operator
+
+I57:
+END->return const ; . } ,/#
+
+I58:
+JUDGE->JUDGE . operator identifier ,/)
+JUDGE->JUDGE . operator identifier ,/operator
+WHILECAUSE->while ( JUDGE . ) ,/{
+
+I59:
+EXP->EXP identifier . operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier . operator identifier SEMICOLON ,/}
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/}
+
+I60:
+BLOCK->{ EXP } .,/char/float/int
+BLOCK->{ EXP } .,/identifier
+BLOCK->{ EXP } .,/if
+BLOCK->{ EXP } .,/return
+BLOCK->{ EXP } .,/while
+BLOCK->{ EXP } .,/{
+
+I61:
+EXP->identifier operator . identifier SEMICOLON ,/identifier
+EXP->identifier operator . identifier SEMICOLON ,/}
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/identifier
+EXP->identifier operator . identifier operator identifier SEMICOLON ,/}
+
+I62:
+SEMICOLON->. ; ,/char/float/int
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/if
+SEMICOLON->. ; ,/return
+SEMICOLON->. ; ,/while
+SEMICOLON->. ; ,/{
+EXP->EXP identifier operator identifier . SEMICOLON ,/char/float/int
+EXP->EXP identifier operator identifier . SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier . SEMICOLON ,/if
+EXP->EXP identifier operator identifier . SEMICOLON ,/return
+EXP->EXP identifier operator identifier . SEMICOLON ,/while
+EXP->EXP identifier operator identifier . SEMICOLON ,/{
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/if
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/return
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/while
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/{
+
+I63:
+BLOCK->{ EXP } .,/char/float/int
+BLOCK->{ EXP } .,/else
+BLOCK->{ EXP } .,/identifier
+BLOCK->{ EXP } .,/if
+BLOCK->{ EXP } .,/return
+BLOCK->{ EXP } .,/while
+BLOCK->{ EXP } .,/{
+
+I64:
+EXP->identifier operator identifier SEMICOLON .,/char/float/int
+EXP->identifier operator identifier SEMICOLON .,/identifier
+EXP->identifier operator identifier SEMICOLON .,/if
+EXP->identifier operator identifier SEMICOLON .,/return
+EXP->identifier operator identifier SEMICOLON .,/while
+EXP->identifier operator identifier SEMICOLON .,/{
+
+I65:
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/char/float/int
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/identifier
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/if
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/return
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/while
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/{
+
+I66:
+IFCAUSE->if ( JUDGE ) .,/{
+
+I67:
+JUDGE->JUDGE operator . identifier ,/)
+JUDGE->JUDGE operator . identifier ,/operator
+
+I68:
+JUDGE->identifier operator . identifier ,/)
+JUDGE->identifier operator . identifier ,/operator
+
+I69:
+END->return const ; } .,/#
+
+I70:
+WHILECAUSE->while ( JUDGE ) .,/{
+
+I71:
+EXP->EXP identifier operator . identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator . identifier SEMICOLON ,/}
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/}
+
+I72:
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/}
+EXP->identifier operator identifier . SEMICOLON ,/identifier
+EXP->identifier operator identifier . SEMICOLON ,/}
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/identifier
+EXP->identifier operator identifier . operator identifier SEMICOLON ,/}
+
+I73:
+EXP->EXP identifier operator identifier SEMICOLON .,/char/float/int
+EXP->EXP identifier operator identifier SEMICOLON .,/identifier
+EXP->EXP identifier operator identifier SEMICOLON .,/if
+EXP->EXP identifier operator identifier SEMICOLON .,/return
+EXP->EXP identifier operator identifier SEMICOLON .,/while
+EXP->EXP identifier operator identifier SEMICOLON .,/{
+
+I74:
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/char/float/int
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/if
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/return
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/while
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/{
+
+I75:
+SEMICOLON->. ; ,/char/float/int
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/if
+SEMICOLON->. ; ,/return
+SEMICOLON->. ; ,/while
+SEMICOLON->. ; ,/{
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/char/float/int
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/identifier
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/if
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/return
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/while
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/{
+
+I76:
+JUDGE->JUDGE operator identifier .,/)
+JUDGE->JUDGE operator identifier .,/operator
+
+I77:
+JUDGE->identifier operator identifier .,/)
+JUDGE->identifier operator identifier .,/operator
+
+I78:
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/}
+EXP->EXP identifier operator identifier . SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier . SEMICOLON ,/}
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/}
+
+I79:
+SEMICOLON->; .,/identifier
+SEMICOLON->; .,/}
+
+I80:
+EXP->identifier operator identifier SEMICOLON .,/identifier
+EXP->identifier operator identifier SEMICOLON .,/}
+
+I81:
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/identifier
+EXP->identifier operator identifier operator . identifier SEMICOLON ,/}
+
+I82:
+SEMICOLON->. ; ,/char/float/int
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/if
+SEMICOLON->. ; ,/return
+SEMICOLON->. ; ,/while
+SEMICOLON->. ; ,/{
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/char/float/int
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/if
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/return
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/while
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/{
+
+I83:
+EXP->identifier operator identifier operator identifier SEMICOLON .,/char/float/int
+EXP->identifier operator identifier operator identifier SEMICOLON .,/identifier
+EXP->identifier operator identifier operator identifier SEMICOLON .,/if
+EXP->identifier operator identifier operator identifier SEMICOLON .,/return
+EXP->identifier operator identifier operator identifier SEMICOLON .,/while
+EXP->identifier operator identifier operator identifier SEMICOLON .,/{
+
+I84:
+EXP->EXP identifier operator identifier SEMICOLON .,/identifier
+EXP->EXP identifier operator identifier SEMICOLON .,/}
+
+I85:
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/}
+
+I86:
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/}
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/identifier
+EXP->identifier operator identifier operator identifier . SEMICOLON ,/}
+
+I87:
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/char/float/int
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/identifier
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/if
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/return
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/while
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/{
+
+I88:
+SEMICOLON->. ; ,/identifier
+SEMICOLON->. ; ,/}
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/identifier
+EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/}
+
+I89:
+EXP->identifier operator identifier operator identifier SEMICOLON .,/identifier
+EXP->identifier operator identifier operator identifier SEMICOLON .,/}
+
+I90:
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/identifier
+EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/}
+

@@ -1,0 +1,169 @@
+-------------0----------------
+int main ( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
+int :2		
+move in: int
+-------------end----------------
+
+-------------1----------------
+main ( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
+main :3		
+move in: int main
+-------------end----------------
+
+-------------2----------------
+( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
+( :4		
+move in: int main (
+-------------end----------------
+
+-------------3----------------
+) { int abc123 ; abc123 = 12 ; return 0 ; } #
+) :5		
+move in: int main ( )
+-------------end----------------
+
+-------------4----------------
+{ int abc123 ; abc123 = 12 ; return 0 ; } #
+{ :6		
+move in: int main ( ) {
+-------------end----------------
+
+-------------5----------------
+int abc123 ; abc123 = 12 ; return 0 ; } #
+int :23		
+move in: int main ( ) { int
+-------------end----------------
+
+-------------6----------------
+abc123 ; abc123 = 12 ; return 0 ; } #
+abc123 :45		
+move in: int main ( ) { int abc123
+-------------end----------------
+
+-------------7----------------
+; abc123 = 12 ; return 0 ; } #
+; :1048596		
+reduce: VARLIST->int identifier 
+int main ( ) { VARLIST
+-------------end----------------
+
+-------------8----------------
+; abc123 = 12 ; return 0 ; } #
+; :38		
+move in: int main ( ) { VARLIST ;
+-------------end----------------
+
+-------------9----------------
+abc123 = 12 ; return 0 ; } #
+abc123 :1048595		
+reduce: SEMICOLON->; 
+int main ( ) { VARLIST SEMICOLON
+-------------end----------------
+
+-------------10----------------
+abc123 = 12 ; return 0 ; } #
+abc123 :1048594		
+reduce: STATEMENT->VARLIST SEMICOLON 
+int main ( ) { STATEMENT
+-------------end----------------
+
+-------------11----------------
+abc123 = 12 ; return 0 ; } #
+abc123 :1048581		
+reduce: PROGRAM->STATEMENT 
+int main ( ) { PROGRAM
+-------------end----------------
+
+-------------12----------------
+abc123 = 12 ; return 0 ; } #
+abc123 :21		
+move in: int main ( ) { PROGRAM abc123
+-------------end----------------
+
+-------------13----------------
+= 12 ; return 0 ; } #
+= :43		
+move in: int main ( ) { PROGRAM abc123 =
+-------------end----------------
+
+-------------14----------------
+12 ; return 0 ; } #
+12 :54		
+move in: int main ( ) { PROGRAM abc123 = 12
+-------------end----------------
+
+-------------15----------------
+; return 0 ; } #
+; :38		
+move in: int main ( ) { PROGRAM abc123 = 12 ;
+-------------end----------------
+
+-------------16----------------
+return 0 ; } #
+return :1048595		
+reduce: SEMICOLON->; 
+int main ( ) { PROGRAM abc123 = 12 SEMICOLON
+-------------end----------------
+
+-------------17----------------
+return 0 ; } #
+return :1048592		
+reduce: EXP->identifier operator identifier SEMICOLON 
+int main ( ) { PROGRAM EXP
+-------------end----------------
+
+-------------18----------------
+return 0 ; } #
+return :1048582		
+reduce: PROGRAM->PROGRAM EXP 
+int main ( ) { PROGRAM
+-------------end----------------
+
+-------------19----------------
+return 0 ; } #
+return :24		
+move in: int main ( ) { PROGRAM return
+-------------end----------------
+
+-------------20----------------
+0 ; } #
+0 :46		
+move in: int main ( ) { PROGRAM return 0
+-------------end----------------
+
+-------------21----------------
+; } #
+; :57		
+move in: int main ( ) { PROGRAM return 0 ;
+-------------end----------------
+
+-------------22----------------
+} #
+} :69		
+move in: int main ( ) { PROGRAM return 0 ; }
+-------------end----------------
+
+-------------23----------------
+#
+# :1048609		
+reduce: END->return const ; } 
+int main ( ) { PROGRAM END
+-------------end----------------
+
+-------------24----------------
+#
+# :1048578		
+reduce: MAIN->PROGRAM END 
+int main ( ) { MAIN
+-------------end----------------
+
+-------------25----------------
+#
+# :1048577		
+reduce: S->int identifier ( ) { MAIN 
+S
+-------------end----------------
+
+-------------26----------------
+#
+# :Yeah!
