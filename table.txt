@@ -1,893 +1,2910 @@
 I0:
-S->. int identifier ( ) { MAIN ,/#
+PROGRAM->. int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->. int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
+PROGRAM_LIST->. PROGRAM ,/#
+PROGRAM_LIST->. PROGRAM ,/int
+PROGRAM_LIST->. PROGRAM_LIST PROGRAM ,/#
+PROGRAM_LIST->. PROGRAM_LIST PROGRAM ,/int
+S->. PROGRAM_LIST ,/#
 S'->. S ,/#
 
 I1:
-S'->S .,/#
+PROGRAM_LIST->PROGRAM .,/#
+PROGRAM_LIST->PROGRAM .,/int
 
 I2:
-S->int . identifier ( ) { MAIN ,/#
+PROGRAM->. int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->. int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
+PROGRAM_LIST->PROGRAM_LIST . PROGRAM ,/#
+PROGRAM_LIST->PROGRAM_LIST . PROGRAM ,/int
+S->PROGRAM_LIST .,/#
 
 I3:
-S->int identifier . ( ) { MAIN ,/#
+S'->S .,/#
 
 I4:
-S->int identifier ( . ) { MAIN ,/#
+PROGRAM->int . id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->int . id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
 
 I5:
-S->int identifier ( ) . { MAIN ,/#
+PROGRAM_LIST->PROGRAM_LIST PROGRAM .,/#
+PROGRAM_LIST->PROGRAM_LIST PROGRAM .,/int
 
 I6:
-BLOCK->. { EXP } ,/char/float/int
-BLOCK->. { EXP } ,/identifier
-BLOCK->. { EXP } ,/if
-BLOCK->. { EXP } ,/return
-BLOCK->. { EXP } ,/while
-BLOCK->. { EXP } ,/{
-ELSECAUSE->. IFCAUSE BLOCK else ,/{
-END->. return const ; } ,/#
-EXP->. identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier SEMICOLON ,/if
-EXP->. identifier operator identifier SEMICOLON ,/return
-EXP->. identifier operator identifier SEMICOLON ,/while
-EXP->. identifier operator identifier SEMICOLON ,/{
-EXP->. EXP identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier SEMICOLON ,/if
-EXP->. EXP identifier operator identifier SEMICOLON ,/return
-EXP->. EXP identifier operator identifier SEMICOLON ,/while
-EXP->. EXP identifier operator identifier SEMICOLON ,/{
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/{
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/{
-IFBLOCK->. ELSECAUSE BLOCK ,/char/float/int
-IFBLOCK->. ELSECAUSE BLOCK ,/identifier
-IFBLOCK->. ELSECAUSE BLOCK ,/if
-IFBLOCK->. ELSECAUSE BLOCK ,/return
-IFBLOCK->. ELSECAUSE BLOCK ,/while
-IFBLOCK->. ELSECAUSE BLOCK ,/{
-IFBLOCK->. IFCAUSE BLOCK ,/char/float/int
-IFBLOCK->. IFCAUSE BLOCK ,/identifier
-IFBLOCK->. IFCAUSE BLOCK ,/if
-IFBLOCK->. IFCAUSE BLOCK ,/return
-IFBLOCK->. IFCAUSE BLOCK ,/while
-IFBLOCK->. IFCAUSE BLOCK ,/{
-IFCAUSE->. if ( JUDGE ) ,/{
-MAIN->. END ,/#
-MAIN->. PROGRAM END ,/#
-PROGRAM->. BLOCK ,/char/float/int
-PROGRAM->. BLOCK ,/identifier
-PROGRAM->. BLOCK ,/if
-PROGRAM->. BLOCK ,/return
-PROGRAM->. BLOCK ,/while
-PROGRAM->. BLOCK ,/{
-PROGRAM->. EXP ,/char/float/int
-PROGRAM->. EXP ,/identifier
-PROGRAM->. EXP ,/if
-PROGRAM->. EXP ,/return
-PROGRAM->. EXP ,/while
-PROGRAM->. EXP ,/{
-PROGRAM->. IFBLOCK ,/char/float/int
-PROGRAM->. IFBLOCK ,/identifier
-PROGRAM->. IFBLOCK ,/if
-PROGRAM->. IFBLOCK ,/return
-PROGRAM->. IFBLOCK ,/while
-PROGRAM->. IFBLOCK ,/{
-PROGRAM->. STATEMENT ,/char/float/int
-PROGRAM->. STATEMENT ,/identifier
-PROGRAM->. STATEMENT ,/if
-PROGRAM->. STATEMENT ,/return
-PROGRAM->. STATEMENT ,/while
-PROGRAM->. STATEMENT ,/{
-PROGRAM->. WHILEBLOCK ,/char/float/int
-PROGRAM->. WHILEBLOCK ,/identifier
-PROGRAM->. WHILEBLOCK ,/if
-PROGRAM->. WHILEBLOCK ,/return
-PROGRAM->. WHILEBLOCK ,/while
-PROGRAM->. WHILEBLOCK ,/{
-PROGRAM->. PROGRAM BLOCK ,/char/float/int
-PROGRAM->. PROGRAM BLOCK ,/identifier
-PROGRAM->. PROGRAM BLOCK ,/if
-PROGRAM->. PROGRAM BLOCK ,/return
-PROGRAM->. PROGRAM BLOCK ,/while
-PROGRAM->. PROGRAM BLOCK ,/{
-PROGRAM->. PROGRAM EXP ,/char/float/int
-PROGRAM->. PROGRAM EXP ,/identifier
-PROGRAM->. PROGRAM EXP ,/if
-PROGRAM->. PROGRAM EXP ,/return
-PROGRAM->. PROGRAM EXP ,/while
-PROGRAM->. PROGRAM EXP ,/{
-PROGRAM->. PROGRAM IFBLOCK ,/char/float/int
-PROGRAM->. PROGRAM IFBLOCK ,/identifier
-PROGRAM->. PROGRAM IFBLOCK ,/if
-PROGRAM->. PROGRAM IFBLOCK ,/return
-PROGRAM->. PROGRAM IFBLOCK ,/while
-PROGRAM->. PROGRAM IFBLOCK ,/{
-PROGRAM->. PROGRAM STATEMENT ,/char/float/int
-PROGRAM->. PROGRAM STATEMENT ,/identifier
-PROGRAM->. PROGRAM STATEMENT ,/if
-PROGRAM->. PROGRAM STATEMENT ,/return
-PROGRAM->. PROGRAM STATEMENT ,/while
-PROGRAM->. PROGRAM STATEMENT ,/{
-PROGRAM->. PROGRAM WHILEBLOCK ,/char/float/int
-PROGRAM->. PROGRAM WHILEBLOCK ,/identifier
-PROGRAM->. PROGRAM WHILEBLOCK ,/if
-PROGRAM->. PROGRAM WHILEBLOCK ,/return
-PROGRAM->. PROGRAM WHILEBLOCK ,/while
-PROGRAM->. PROGRAM WHILEBLOCK ,/{
-STATEMENT->. VARLIST SEMICOLON ,/char/float/int
-STATEMENT->. VARLIST SEMICOLON ,/identifier
-STATEMENT->. VARLIST SEMICOLON ,/if
-STATEMENT->. VARLIST SEMICOLON ,/return
-STATEMENT->. VARLIST SEMICOLON ,/while
-STATEMENT->. VARLIST SEMICOLON ,/{
-VARLIST->. char identifier ,/,
-VARLIST->. char identifier ,/;
-VARLIST->. float identifier ,/,
-VARLIST->. float identifier ,/;
-VARLIST->. int identifier ,/,
-VARLIST->. int identifier ,/;
-VARLIST->. VARLIST , identifier ,/,
-VARLIST->. VARLIST , identifier ,/;
-WHILEBLOCK->. WHILECAUSE BLOCK ,/char/float/int
-WHILEBLOCK->. WHILECAUSE BLOCK ,/identifier
-WHILEBLOCK->. WHILECAUSE BLOCK ,/if
-WHILEBLOCK->. WHILECAUSE BLOCK ,/return
-WHILEBLOCK->. WHILECAUSE BLOCK ,/while
-WHILEBLOCK->. WHILECAUSE BLOCK ,/{
-WHILECAUSE->. while ( JUDGE ) ,/{
-S->int identifier ( ) { . MAIN ,/#
+PROGRAM->int id . ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->int id . ( ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
 
 I7:
-PROGRAM->BLOCK .,/char/float/int
-PROGRAM->BLOCK .,/identifier
-PROGRAM->BLOCK .,/if
-PROGRAM->BLOCK .,/return
-PROGRAM->BLOCK .,/while
-PROGRAM->BLOCK .,/{
+PROGRAM->int id ( . ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->int id ( . ) { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
 
 I8:
-BLOCK->. { EXP } ,/char/float/int
-BLOCK->. { EXP } ,/identifier
-BLOCK->. { EXP } ,/if
-BLOCK->. { EXP } ,/return
-BLOCK->. { EXP } ,/while
-BLOCK->. { EXP } ,/{
-IFBLOCK->ELSECAUSE . BLOCK ,/char/float/int
-IFBLOCK->ELSECAUSE . BLOCK ,/identifier
-IFBLOCK->ELSECAUSE . BLOCK ,/if
-IFBLOCK->ELSECAUSE . BLOCK ,/return
-IFBLOCK->ELSECAUSE . BLOCK ,/while
-IFBLOCK->ELSECAUSE . BLOCK ,/{
+PROGRAM->int id ( ) . { DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->int id ( ) . { DECLARATION_STATEMENT STATEMENT_LIST } ,/int
 
 I9:
-MAIN->END .,/#
+DECLARATION->. TYPE_SPECIFIER ID_LIST ; ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION->. TYPE_SPECIFIER ID_LIST ; ,/float/int
+DECLARATION_STATEMENT->. DECLARATION ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION_STATEMENT->. DECLARATION ,/float/int
+DECLARATION_STATEMENT->. DECLARATION_STATEMENT DECLARATION ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION_STATEMENT->. DECLARATION_STATEMENT DECLARATION ,/float/int
+TYPE_SPECIFIER->. float ,/id
+TYPE_SPECIFIER->. int ,/id
+PROGRAM->int id ( ) { . DECLARATION_STATEMENT STATEMENT_LIST } ,/#
+PROGRAM->int id ( ) { . DECLARATION_STATEMENT STATEMENT_LIST } ,/int
 
 I10:
-EXP->EXP . identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier SEMICOLON ,/if
-EXP->EXP . identifier operator identifier SEMICOLON ,/return
-EXP->EXP . identifier operator identifier SEMICOLON ,/while
-EXP->EXP . identifier operator identifier SEMICOLON ,/{
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/{
-PROGRAM->EXP .,/char/float/int
-PROGRAM->EXP .,/identifier
-PROGRAM->EXP .,/if
-PROGRAM->EXP .,/return
-PROGRAM->EXP .,/while
-PROGRAM->EXP .,/{
+DECLARATION_STATEMENT->DECLARATION .,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION_STATEMENT->DECLARATION .,/float/int
 
 I11:
-PROGRAM->IFBLOCK .,/char/float/int
-PROGRAM->IFBLOCK .,/identifier
-PROGRAM->IFBLOCK .,/if
-PROGRAM->IFBLOCK .,/return
-PROGRAM->IFBLOCK .,/while
-PROGRAM->IFBLOCK .,/{
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+DECLARATION->. TYPE_SPECIFIER ID_LIST ; ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION->. TYPE_SPECIFIER ID_LIST ; ,/float/int
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->. STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT ,/}
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/}
+TYPE_SPECIFIER->. float ,/id
+TYPE_SPECIFIER->. int ,/id
+DECLARATION_STATEMENT->DECLARATION_STATEMENT . DECLARATION ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION_STATEMENT->DECLARATION_STATEMENT . DECLARATION ,/float/int
+PROGRAM->int id ( ) { DECLARATION_STATEMENT . STATEMENT_LIST } ,/#
+PROGRAM->int id ( ) { DECLARATION_STATEMENT . STATEMENT_LIST } ,/int
 
 I12:
-BLOCK->. { EXP } ,/char/float/int
-BLOCK->. { EXP } ,/else
-BLOCK->. { EXP } ,/identifier
-BLOCK->. { EXP } ,/if
-BLOCK->. { EXP } ,/return
-BLOCK->. { EXP } ,/while
-BLOCK->. { EXP } ,/{
-ELSECAUSE->IFCAUSE . BLOCK else ,/{
-IFBLOCK->IFCAUSE . BLOCK ,/char/float/int
-IFBLOCK->IFCAUSE . BLOCK ,/identifier
-IFBLOCK->IFCAUSE . BLOCK ,/if
-IFBLOCK->IFCAUSE . BLOCK ,/return
-IFBLOCK->IFCAUSE . BLOCK ,/while
-IFBLOCK->IFCAUSE . BLOCK ,/{
+ID_LIST->. id ,/,
+ID_LIST->. id ,/;
+ID_LIST->. ID_LIST , id ,/,
+ID_LIST->. ID_LIST , id ,/;
+ID_LIST->. id [ digit ] ,/,
+ID_LIST->. id [ digit ] ,/;
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/,
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/;
+DECLARATION->TYPE_SPECIFIER . ID_LIST ; ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION->TYPE_SPECIFIER . ID_LIST ; ,/float/int
 
 I13:
-S->int identifier ( ) { MAIN .,/#
+TYPE_SPECIFIER->float .,/id
 
 I14:
-BLOCK->. { EXP } ,/char/float/int
-BLOCK->. { EXP } ,/identifier
-BLOCK->. { EXP } ,/if
-BLOCK->. { EXP } ,/return
-BLOCK->. { EXP } ,/while
-BLOCK->. { EXP } ,/{
-ELSECAUSE->. IFCAUSE BLOCK else ,/{
-END->. return const ; } ,/#
-EXP->. identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier SEMICOLON ,/if
-EXP->. identifier operator identifier SEMICOLON ,/return
-EXP->. identifier operator identifier SEMICOLON ,/while
-EXP->. identifier operator identifier SEMICOLON ,/{
-EXP->. EXP identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier SEMICOLON ,/if
-EXP->. EXP identifier operator identifier SEMICOLON ,/return
-EXP->. EXP identifier operator identifier SEMICOLON ,/while
-EXP->. EXP identifier operator identifier SEMICOLON ,/{
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/{
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/{
-IFBLOCK->. ELSECAUSE BLOCK ,/char/float/int
-IFBLOCK->. ELSECAUSE BLOCK ,/identifier
-IFBLOCK->. ELSECAUSE BLOCK ,/if
-IFBLOCK->. ELSECAUSE BLOCK ,/return
-IFBLOCK->. ELSECAUSE BLOCK ,/while
-IFBLOCK->. ELSECAUSE BLOCK ,/{
-IFBLOCK->. IFCAUSE BLOCK ,/char/float/int
-IFBLOCK->. IFCAUSE BLOCK ,/identifier
-IFBLOCK->. IFCAUSE BLOCK ,/if
-IFBLOCK->. IFCAUSE BLOCK ,/return
-IFBLOCK->. IFCAUSE BLOCK ,/while
-IFBLOCK->. IFCAUSE BLOCK ,/{
-IFCAUSE->. if ( JUDGE ) ,/{
-STATEMENT->. VARLIST SEMICOLON ,/char/float/int
-STATEMENT->. VARLIST SEMICOLON ,/identifier
-STATEMENT->. VARLIST SEMICOLON ,/if
-STATEMENT->. VARLIST SEMICOLON ,/return
-STATEMENT->. VARLIST SEMICOLON ,/while
-STATEMENT->. VARLIST SEMICOLON ,/{
-VARLIST->. char identifier ,/,
-VARLIST->. char identifier ,/;
-VARLIST->. float identifier ,/,
-VARLIST->. float identifier ,/;
-VARLIST->. int identifier ,/,
-VARLIST->. int identifier ,/;
-VARLIST->. VARLIST , identifier ,/,
-VARLIST->. VARLIST , identifier ,/;
-WHILEBLOCK->. WHILECAUSE BLOCK ,/char/float/int
-WHILEBLOCK->. WHILECAUSE BLOCK ,/identifier
-WHILEBLOCK->. WHILECAUSE BLOCK ,/if
-WHILEBLOCK->. WHILECAUSE BLOCK ,/return
-WHILEBLOCK->. WHILECAUSE BLOCK ,/while
-WHILEBLOCK->. WHILECAUSE BLOCK ,/{
-WHILECAUSE->. while ( JUDGE ) ,/{
-MAIN->PROGRAM . END ,/#
-PROGRAM->PROGRAM . BLOCK ,/char/float/int
-PROGRAM->PROGRAM . BLOCK ,/identifier
-PROGRAM->PROGRAM . BLOCK ,/if
-PROGRAM->PROGRAM . BLOCK ,/return
-PROGRAM->PROGRAM . BLOCK ,/while
-PROGRAM->PROGRAM . BLOCK ,/{
-PROGRAM->PROGRAM . EXP ,/char/float/int
-PROGRAM->PROGRAM . EXP ,/identifier
-PROGRAM->PROGRAM . EXP ,/if
-PROGRAM->PROGRAM . EXP ,/return
-PROGRAM->PROGRAM . EXP ,/while
-PROGRAM->PROGRAM . EXP ,/{
-PROGRAM->PROGRAM . IFBLOCK ,/char/float/int
-PROGRAM->PROGRAM . IFBLOCK ,/identifier
-PROGRAM->PROGRAM . IFBLOCK ,/if
-PROGRAM->PROGRAM . IFBLOCK ,/return
-PROGRAM->PROGRAM . IFBLOCK ,/while
-PROGRAM->PROGRAM . IFBLOCK ,/{
-PROGRAM->PROGRAM . STATEMENT ,/char/float/int
-PROGRAM->PROGRAM . STATEMENT ,/identifier
-PROGRAM->PROGRAM . STATEMENT ,/if
-PROGRAM->PROGRAM . STATEMENT ,/return
-PROGRAM->PROGRAM . STATEMENT ,/while
-PROGRAM->PROGRAM . STATEMENT ,/{
-PROGRAM->PROGRAM . WHILEBLOCK ,/char/float/int
-PROGRAM->PROGRAM . WHILEBLOCK ,/identifier
-PROGRAM->PROGRAM . WHILEBLOCK ,/if
-PROGRAM->PROGRAM . WHILEBLOCK ,/return
-PROGRAM->PROGRAM . WHILEBLOCK ,/while
-PROGRAM->PROGRAM . WHILEBLOCK ,/{
+TYPE_SPECIFIER->int .,/id
 
 I15:
-PROGRAM->STATEMENT .,/char/float/int
-PROGRAM->STATEMENT .,/identifier
-PROGRAM->STATEMENT .,/if
-PROGRAM->STATEMENT .,/return
-PROGRAM->STATEMENT .,/while
-PROGRAM->STATEMENT .,/{
+STATEMENT->ASSIGN_EXPRESSION . ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->ASSIGN_EXPRESSION . ; ,/}
 
 I16:
-SEMICOLON->. ; ,/char/float/int
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/if
-SEMICOLON->. ; ,/return
-SEMICOLON->. ; ,/while
-SEMICOLON->. ; ,/{
-STATEMENT->VARLIST . SEMICOLON ,/char/float/int
-STATEMENT->VARLIST . SEMICOLON ,/identifier
-STATEMENT->VARLIST . SEMICOLON ,/if
-STATEMENT->VARLIST . SEMICOLON ,/return
-STATEMENT->VARLIST . SEMICOLON ,/while
-STATEMENT->VARLIST . SEMICOLON ,/{
-VARLIST->VARLIST . , identifier ,/,
-VARLIST->VARLIST . , identifier ,/;
+DECLARATION_STATEMENT->DECLARATION_STATEMENT DECLARATION .,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION_STATEMENT->DECLARATION_STATEMENT DECLARATION .,/float/int
 
 I17:
-PROGRAM->WHILEBLOCK .,/char/float/int
-PROGRAM->WHILEBLOCK .,/identifier
-PROGRAM->WHILEBLOCK .,/if
-PROGRAM->WHILEBLOCK .,/return
-PROGRAM->WHILEBLOCK .,/while
-PROGRAM->WHILEBLOCK .,/{
+STATEMENT->ITERATION_EXPRESSION .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->ITERATION_EXPRESSION .,/}
 
 I18:
-BLOCK->. { EXP } ,/char/float/int
-BLOCK->. { EXP } ,/identifier
-BLOCK->. { EXP } ,/if
-BLOCK->. { EXP } ,/return
-BLOCK->. { EXP } ,/while
-BLOCK->. { EXP } ,/{
-WHILEBLOCK->WHILECAUSE . BLOCK ,/char/float/int
-WHILEBLOCK->WHILECAUSE . BLOCK ,/identifier
-WHILEBLOCK->WHILECAUSE . BLOCK ,/if
-WHILEBLOCK->WHILECAUSE . BLOCK ,/return
-WHILEBLOCK->WHILECAUSE . BLOCK ,/while
-WHILEBLOCK->WHILECAUSE . BLOCK ,/{
+ASSIGN_EXPRESSION->LEFT_VALUE . = EXPRESSION ,/;
 
 I19:
-VARLIST->char . identifier ,/,
-VARLIST->char . identifier ,/;
+E->. T ,/+
+E->. T ,/-
+E->. T ,/;
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/;
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/;
+EXPRESSION->. E ,/;
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+STATEMENT->RETURN . EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->RETURN . EXPRESSION ; ,/}
 
 I20:
-VARLIST->float . identifier ,/,
-VARLIST->float . identifier ,/;
+STATEMENT->SELECTION_STATEMENT .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->SELECTION_STATEMENT .,/}
 
 I21:
-EXP->identifier . operator identifier SEMICOLON ,/char/float/int
-EXP->identifier . operator identifier SEMICOLON ,/identifier
-EXP->identifier . operator identifier SEMICOLON ,/if
-EXP->identifier . operator identifier SEMICOLON ,/return
-EXP->identifier . operator identifier SEMICOLON ,/while
-EXP->identifier . operator identifier SEMICOLON ,/{
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/identifier
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/if
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/return
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/while
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/{
+STATEMENT_LIST->STATEMENT .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->STATEMENT .,/}
 
 I22:
-IFCAUSE->if . ( JUDGE ) ,/{
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/}
+PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST . } ,/#
+PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST . } ,/int
 
 I23:
-VARLIST->int . identifier ,/,
-VARLIST->int . identifier ,/;
+ITERATION_EXPRESSION->for . ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for . ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
 
 I24:
-END->return . const ; } ,/#
+LEFT_VALUE->id .,/=
+LEFT_VALUE->id . [ EXPRESSION ] ,/=
 
 I25:
-WHILECAUSE->while . ( JUDGE ) ,/{
+SELECTION_STATEMENT->if . ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if . ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
 
 I26:
-EXP->. identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier SEMICOLON ,/}
-EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier SEMICOLON ,/}
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/}
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/}
-BLOCK->{ . EXP } ,/char/float/int
-BLOCK->{ . EXP } ,/identifier
-BLOCK->{ . EXP } ,/if
-BLOCK->{ . EXP } ,/return
-BLOCK->{ . EXP } ,/while
-BLOCK->{ . EXP } ,/{
+STATEMENT->printf . ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf . ( string ) ; ,/}
+STATEMENT->printf . ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf . ( string ,M ID_LIST ) ; ,/}
 
 I27:
-IFBLOCK->ELSECAUSE BLOCK .,/char/float/int
-IFBLOCK->ELSECAUSE BLOCK .,/identifier
-IFBLOCK->ELSECAUSE BLOCK .,/if
-IFBLOCK->ELSECAUSE BLOCK .,/return
-IFBLOCK->ELSECAUSE BLOCK .,/while
-IFBLOCK->ELSECAUSE BLOCK .,/{
+STATEMENT->scanf( . string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( . string , & id ) ; ,/}
 
 I28:
-EXP->EXP identifier . operator identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier . operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier . operator identifier SEMICOLON ,/if
-EXP->EXP identifier . operator identifier SEMICOLON ,/return
-EXP->EXP identifier . operator identifier SEMICOLON ,/while
-EXP->EXP identifier . operator identifier SEMICOLON ,/{
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/if
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/return
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/while
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/{
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->. STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT ,/}
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/}
+STATEMENT->{ . STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->{ . STATEMENT_LIST } ,/}
 
 I29:
-ELSECAUSE->IFCAUSE BLOCK . else ,/{
-IFBLOCK->IFCAUSE BLOCK .,/char/float/int
-IFBLOCK->IFCAUSE BLOCK .,/identifier
-IFBLOCK->IFCAUSE BLOCK .,/if
-IFBLOCK->IFCAUSE BLOCK .,/return
-IFBLOCK->IFCAUSE BLOCK .,/while
-IFBLOCK->IFCAUSE BLOCK .,/{
+ID_LIST->ID_LIST . , id ,/,
+ID_LIST->ID_LIST . , id ,/;
+DECLARATION->TYPE_SPECIFIER ID_LIST . ; ,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION->TYPE_SPECIFIER ID_LIST . ; ,/float/int
 
 I30:
-EXP->. identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier SEMICOLON ,/}
-EXP->. EXP identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier SEMICOLON ,/}
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. identifier operator identifier operator identifier SEMICOLON ,/}
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->. EXP identifier operator identifier operator identifier SEMICOLON ,/}
-BLOCK->{ . EXP } ,/char/float/int
-BLOCK->{ . EXP } ,/else
-BLOCK->{ . EXP } ,/identifier
-BLOCK->{ . EXP } ,/if
-BLOCK->{ . EXP } ,/return
-BLOCK->{ . EXP } ,/while
-BLOCK->{ . EXP } ,/{
+ID_LIST->id .,/,
+ID_LIST->id .,/;
+ID_LIST->id . [ digit ] ,/,
+ID_LIST->id . [ digit ] ,/;
+ID_LIST->id . [ digit ] = { DIGIT_LIST } ,/,
+ID_LIST->id . [ digit ] = { DIGIT_LIST } ,/;
 
 I31:
-PROGRAM->PROGRAM BLOCK .,/char/float/int
-PROGRAM->PROGRAM BLOCK .,/identifier
-PROGRAM->PROGRAM BLOCK .,/if
-PROGRAM->PROGRAM BLOCK .,/return
-PROGRAM->PROGRAM BLOCK .,/while
-PROGRAM->PROGRAM BLOCK .,/{
+STATEMENT->ASSIGN_EXPRESSION ; .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->ASSIGN_EXPRESSION ; .,/}
 
 I32:
-MAIN->PROGRAM END .,/#
+E->. T ,/+
+E->. T ,/-
+E->. T ,/;
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/;
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/;
+EXPRESSION->. E ,/;
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+ASSIGN_EXPRESSION->LEFT_VALUE = . EXPRESSION ,/;
 
 I33:
-EXP->EXP . identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier SEMICOLON ,/if
-EXP->EXP . identifier operator identifier SEMICOLON ,/return
-EXP->EXP . identifier operator identifier SEMICOLON ,/while
-EXP->EXP . identifier operator identifier SEMICOLON ,/{
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/if
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/return
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/while
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/{
-PROGRAM->PROGRAM EXP .,/char/float/int
-PROGRAM->PROGRAM EXP .,/identifier
-PROGRAM->PROGRAM EXP .,/if
-PROGRAM->PROGRAM EXP .,/return
-PROGRAM->PROGRAM EXP .,/while
-PROGRAM->PROGRAM EXP .,/{
+E->. T ,/)
+E->. T ,/+
+E->. T ,/-
+E->. E + T ,/)
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E - T ,/)
+E->. E - T ,/+
+E->. E - T ,/-
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+F->( . E ) ,/*
+F->( . E ) ,/+
+F->( . E ) ,/-
+F->( . E ) ,//
+F->( . E ) ,/;
 
 I34:
-PROGRAM->PROGRAM IFBLOCK .,/char/float/int
-PROGRAM->PROGRAM IFBLOCK .,/identifier
-PROGRAM->PROGRAM IFBLOCK .,/if
-PROGRAM->PROGRAM IFBLOCK .,/return
-PROGRAM->PROGRAM IFBLOCK .,/while
-PROGRAM->PROGRAM IFBLOCK .,/{
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . + T ,/;
+E->E . - T ,/+
+E->E . - T ,/-
+E->E . - T ,/;
+EXPRESSION->E .,/;
 
 I35:
-PROGRAM->PROGRAM STATEMENT .,/char/float/int
-PROGRAM->PROGRAM STATEMENT .,/identifier
-PROGRAM->PROGRAM STATEMENT .,/if
-PROGRAM->PROGRAM STATEMENT .,/return
-PROGRAM->PROGRAM STATEMENT .,/while
-PROGRAM->PROGRAM STATEMENT .,/{
+STATEMENT->RETURN EXPRESSION . ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->RETURN EXPRESSION . ; ,/}
 
 I36:
-PROGRAM->PROGRAM WHILEBLOCK .,/char/float/int
-PROGRAM->PROGRAM WHILEBLOCK .,/identifier
-PROGRAM->PROGRAM WHILEBLOCK .,/if
-PROGRAM->PROGRAM WHILEBLOCK .,/return
-PROGRAM->PROGRAM WHILEBLOCK .,/while
-PROGRAM->PROGRAM WHILEBLOCK .,/{
+T->F .,/*
+T->F .,/+
+T->F .,/-
+T->F .,//
+T->F .,/;
 
 I37:
-VARLIST->VARLIST , . identifier ,/,
-VARLIST->VARLIST , . identifier ,/;
+E->T .,/+
+E->T .,/-
+E->T .,/;
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/;
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/;
 
 I38:
-SEMICOLON->; .,/char/float/int
-SEMICOLON->; .,/identifier
-SEMICOLON->; .,/if
-SEMICOLON->; .,/return
-SEMICOLON->; .,/while
-SEMICOLON->; .,/{
+F->digit .,/*
+F->digit .,/+
+F->digit .,/-
+F->digit .,//
+F->digit .,/;
 
 I39:
-STATEMENT->VARLIST SEMICOLON .,/char/float/int
-STATEMENT->VARLIST SEMICOLON .,/identifier
-STATEMENT->VARLIST SEMICOLON .,/if
-STATEMENT->VARLIST SEMICOLON .,/return
-STATEMENT->VARLIST SEMICOLON .,/while
-STATEMENT->VARLIST SEMICOLON .,/{
+F->id .,/*
+F->id .,/+
+F->id .,/-
+F->id .,//
+F->id .,/;
+F->id . [ EXPRESSION ] ,/*
+F->id . [ EXPRESSION ] ,/+
+F->id . [ EXPRESSION ] ,/-
+F->id . [ EXPRESSION ] ,//
+F->id . [ EXPRESSION ] ,/;
 
 I40:
-WHILEBLOCK->WHILECAUSE BLOCK .,/char/float/int
-WHILEBLOCK->WHILECAUSE BLOCK .,/identifier
-WHILEBLOCK->WHILECAUSE BLOCK .,/if
-WHILEBLOCK->WHILECAUSE BLOCK .,/return
-WHILEBLOCK->WHILECAUSE BLOCK .,/while
-WHILEBLOCK->WHILECAUSE BLOCK .,/{
+STATEMENT_LIST->STATEMENT_LIST STATEMENT .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->STATEMENT_LIST STATEMENT .,/}
 
 I41:
-VARLIST->char identifier .,/,
-VARLIST->char identifier .,/;
+PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } .,/#
+PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } .,/int
 
 I42:
-VARLIST->float identifier .,/,
-VARLIST->float identifier .,/;
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+ITERATION_EXPRESSION->for ( . ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( . ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
 
 I43:
-EXP->identifier operator . identifier SEMICOLON ,/char/float/int
-EXP->identifier operator . identifier SEMICOLON ,/identifier
-EXP->identifier operator . identifier SEMICOLON ,/if
-EXP->identifier operator . identifier SEMICOLON ,/return
-EXP->identifier operator . identifier SEMICOLON ,/while
-EXP->identifier operator . identifier SEMICOLON ,/{
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/char/float/int
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/identifier
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/if
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/return
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/while
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/{
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+LEFT_VALUE->id [ . EXPRESSION ] ,/=
 
 I44:
-JUDGE->. JUDGE operator identifier ,/)
-JUDGE->. JUDGE operator identifier ,/operator
-JUDGE->. identifier operator identifier ,/)
-JUDGE->. identifier operator identifier ,/operator
-IFCAUSE->if ( . JUDGE ) ,/{
+M->. @ ,/(/digit/id
+SELECTION_STATEMENT->if ( . M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( . M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
 
 I45:
-VARLIST->int identifier .,/,
-VARLIST->int identifier .,/;
+STATEMENT->printf ( . string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( . string ) ; ,/}
+STATEMENT->printf ( . string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( . string ,M ID_LIST ) ; ,/}
 
 I46:
-END->return const . ; } ,/#
+STATEMENT->scanf( string . , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string . , & id ) ; ,/}
 
 I47:
-JUDGE->. JUDGE operator identifier ,/)
-JUDGE->. JUDGE operator identifier ,/operator
-JUDGE->. identifier operator identifier ,/)
-JUDGE->. identifier operator identifier ,/operator
-WHILECAUSE->while ( . JUDGE ) ,/{
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/}
+STATEMENT->{ STATEMENT_LIST . } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->{ STATEMENT_LIST . } ,/}
 
 I48:
-EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier SEMICOLON ,/}
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/}
-BLOCK->{ EXP . } ,/char/float/int
-BLOCK->{ EXP . } ,/identifier
-BLOCK->{ EXP . } ,/if
-BLOCK->{ EXP . } ,/return
-BLOCK->{ EXP . } ,/while
-BLOCK->{ EXP . } ,/{
+ID_LIST->ID_LIST , . id ,/,
+ID_LIST->ID_LIST , . id ,/;
 
 I49:
-EXP->identifier . operator identifier SEMICOLON ,/identifier
-EXP->identifier . operator identifier SEMICOLON ,/}
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/identifier
-EXP->identifier . operator identifier operator identifier SEMICOLON ,/}
+DECLARATION->TYPE_SPECIFIER ID_LIST ; .,/(/digit/for/id/if/printf/scanf(/{
+DECLARATION->TYPE_SPECIFIER ID_LIST ; .,/float/int
 
 I50:
-EXP->EXP identifier operator . identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier operator . identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator . identifier SEMICOLON ,/if
-EXP->EXP identifier operator . identifier SEMICOLON ,/return
-EXP->EXP identifier operator . identifier SEMICOLON ,/while
-EXP->EXP identifier operator . identifier SEMICOLON ,/{
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/if
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/return
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/while
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/{
+ID_LIST->id [ . digit ] ,/,
+ID_LIST->id [ . digit ] ,/;
+ID_LIST->id [ . digit ] = { DIGIT_LIST } ,/,
+ID_LIST->id [ . digit ] = { DIGIT_LIST } ,/;
 
 I51:
-ELSECAUSE->IFCAUSE BLOCK else .,/{
+ASSIGN_EXPRESSION->LEFT_VALUE = EXPRESSION .,/;
 
 I52:
-EXP->EXP . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier SEMICOLON ,/}
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP . identifier operator identifier operator identifier SEMICOLON ,/}
-BLOCK->{ EXP . } ,/char/float/int
-BLOCK->{ EXP . } ,/else
-BLOCK->{ EXP . } ,/identifier
-BLOCK->{ EXP . } ,/if
-BLOCK->{ EXP . } ,/return
-BLOCK->{ EXP . } ,/while
-BLOCK->{ EXP . } ,/{
+E->. T ,/)
+E->. T ,/+
+E->. T ,/-
+E->. E + T ,/)
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E - T ,/)
+E->. E - T ,/+
+E->. E - T ,/-
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+F->( . E ) ,/)
+F->( . E ) ,/*
+F->( . E ) ,/+
+F->( . E ) ,/-
+F->( . E ) ,//
 
 I53:
-VARLIST->VARLIST , identifier .,/,
-VARLIST->VARLIST , identifier .,/;
+E->E . + T ,/)
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . - T ,/)
+E->E . - T ,/+
+E->E . - T ,/-
+F->( E . ) ,/*
+F->( E . ) ,/+
+F->( E . ) ,/-
+F->( E . ) ,//
+F->( E . ) ,/;
 
 I54:
-SEMICOLON->. ; ,/char/float/int
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/if
-SEMICOLON->. ; ,/return
-SEMICOLON->. ; ,/while
-SEMICOLON->. ; ,/{
-EXP->identifier operator identifier . SEMICOLON ,/char/float/int
-EXP->identifier operator identifier . SEMICOLON ,/identifier
-EXP->identifier operator identifier . SEMICOLON ,/if
-EXP->identifier operator identifier . SEMICOLON ,/return
-EXP->identifier operator identifier . SEMICOLON ,/while
-EXP->identifier operator identifier . SEMICOLON ,/{
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/char/float/int
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/identifier
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/if
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/return
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/while
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/{
+T->F .,/)
+T->F .,/*
+T->F .,/+
+T->F .,/-
+T->F .,//
 
 I55:
-JUDGE->JUDGE . operator identifier ,/)
-JUDGE->JUDGE . operator identifier ,/operator
-IFCAUSE->if ( JUDGE . ) ,/{
+E->T .,/)
+E->T .,/+
+E->T .,/-
+T->T . * F ,/)
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . / F ,/)
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
 
 I56:
-JUDGE->identifier . operator identifier ,/)
-JUDGE->identifier . operator identifier ,/operator
+F->digit .,/)
+F->digit .,/*
+F->digit .,/+
+F->digit .,/-
+F->digit .,//
 
 I57:
-END->return const ; . } ,/#
+F->id .,/)
+F->id .,/*
+F->id .,/+
+F->id .,/-
+F->id .,//
+F->id . [ EXPRESSION ] ,/)
+F->id . [ EXPRESSION ] ,/*
+F->id . [ EXPRESSION ] ,/+
+F->id . [ EXPRESSION ] ,/-
+F->id . [ EXPRESSION ] ,//
 
 I58:
-JUDGE->JUDGE . operator identifier ,/)
-JUDGE->JUDGE . operator identifier ,/operator
-WHILECAUSE->while ( JUDGE . ) ,/{
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+E->E + . T ,/+
+E->E + . T ,/-
+E->E + . T ,/;
 
 I59:
-EXP->EXP identifier . operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier . operator identifier SEMICOLON ,/}
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier . operator identifier operator identifier SEMICOLON ,/}
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+E->E - . T ,/+
+E->E - . T ,/-
+E->E - . T ,/;
 
 I60:
-BLOCK->{ EXP } .,/char/float/int
-BLOCK->{ EXP } .,/identifier
-BLOCK->{ EXP } .,/if
-BLOCK->{ EXP } .,/return
-BLOCK->{ EXP } .,/while
-BLOCK->{ EXP } .,/{
+STATEMENT->RETURN EXPRESSION ; .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->RETURN EXPRESSION ; .,/}
 
 I61:
-EXP->identifier operator . identifier SEMICOLON ,/identifier
-EXP->identifier operator . identifier SEMICOLON ,/}
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/identifier
-EXP->identifier operator . identifier operator identifier SEMICOLON ,/}
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->T * . F ,/*
+T->T * . F ,/+
+T->T * . F ,/-
+T->T * . F ,//
+T->T * . F ,/;
 
 I62:
-SEMICOLON->. ; ,/char/float/int
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/if
-SEMICOLON->. ; ,/return
-SEMICOLON->. ; ,/while
-SEMICOLON->. ; ,/{
-EXP->EXP identifier operator identifier . SEMICOLON ,/char/float/int
-EXP->EXP identifier operator identifier . SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier . SEMICOLON ,/if
-EXP->EXP identifier operator identifier . SEMICOLON ,/return
-EXP->EXP identifier operator identifier . SEMICOLON ,/while
-EXP->EXP identifier operator identifier . SEMICOLON ,/{
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/if
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/return
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/while
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/{
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->T / . F ,/*
+T->T / . F ,/+
+T->T / . F ,/-
+T->T / . F ,//
+T->T / . F ,/;
 
 I63:
-BLOCK->{ EXP } .,/char/float/int
-BLOCK->{ EXP } .,/else
-BLOCK->{ EXP } .,/identifier
-BLOCK->{ EXP } .,/if
-BLOCK->{ EXP } .,/return
-BLOCK->{ EXP } .,/while
-BLOCK->{ EXP } .,/{
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+F->id [ . EXPRESSION ] ,/*
+F->id [ . EXPRESSION ] ,/+
+F->id [ . EXPRESSION ] ,/-
+F->id [ . EXPRESSION ] ,//
+F->id [ . EXPRESSION ] ,/;
 
 I64:
-EXP->identifier operator identifier SEMICOLON .,/char/float/int
-EXP->identifier operator identifier SEMICOLON .,/identifier
-EXP->identifier operator identifier SEMICOLON .,/if
-EXP->identifier operator identifier SEMICOLON .,/return
-EXP->identifier operator identifier SEMICOLON .,/while
-EXP->identifier operator identifier SEMICOLON .,/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION . ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION . ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
 
 I65:
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/char/float/int
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/identifier
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/if
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/return
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/while
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/{
+E->. T ,/)
+E->. T ,/+
+E->. T ,/-
+E->. E + T ,/)
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E - T ,/)
+E->. E - T ,/+
+E->. E - T ,/-
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+F->( . E ) ,/*
+F->( . E ) ,/+
+F->( . E ) ,/-
+F->( . E ) ,//
+F->( . E ) ,/]
 
 I66:
-IFCAUSE->if ( JUDGE ) .,/{
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . + T ,/]
+E->E . - T ,/+
+E->E . - T ,/-
+E->E . - T ,/]
+EXPRESSION->E .,/]
 
 I67:
-JUDGE->JUDGE operator . identifier ,/)
-JUDGE->JUDGE operator . identifier ,/operator
+LEFT_VALUE->id [ EXPRESSION . ] ,/=
 
 I68:
-JUDGE->identifier operator . identifier ,/)
-JUDGE->identifier operator . identifier ,/operator
+T->F .,/*
+T->F .,/+
+T->F .,/-
+T->F .,//
+T->F .,/]
 
 I69:
-END->return const ; } .,/#
+E->T .,/+
+E->T .,/-
+E->T .,/]
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/]
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/]
 
 I70:
-WHILECAUSE->while ( JUDGE ) .,/{
+F->digit .,/*
+F->digit .,/+
+F->digit .,/-
+F->digit .,//
+F->digit .,/]
 
 I71:
-EXP->EXP identifier operator . identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator . identifier SEMICOLON ,/}
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator . identifier operator identifier SEMICOLON ,/}
+F->id .,/*
+F->id .,/+
+F->id .,/-
+F->id .,//
+F->id .,/]
+F->id . [ EXPRESSION ] ,/*
+F->id . [ EXPRESSION ] ,/+
+F->id . [ EXPRESSION ] ,/-
+F->id . [ EXPRESSION ] ,//
+F->id . [ EXPRESSION ] ,/]
 
 I72:
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/}
-EXP->identifier operator identifier . SEMICOLON ,/identifier
-EXP->identifier operator identifier . SEMICOLON ,/}
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/identifier
-EXP->identifier operator identifier . operator identifier SEMICOLON ,/}
+E->. T ,/+
+E->. T ,/-
+E->. T ,/</<=/==/>/>=
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/</<=/==/>/>=
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/</<=/==/>/>=
+EXPRESSION->. E ,/</<=/==/>/>=
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+RELATION_EXPRESSION->. EXPRESSION RELATION_OP EXPRESSION ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+SELECTION_STATEMENT->if ( M . RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M . RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
 
 I73:
-EXP->EXP identifier operator identifier SEMICOLON .,/char/float/int
-EXP->EXP identifier operator identifier SEMICOLON .,/identifier
-EXP->EXP identifier operator identifier SEMICOLON .,/if
-EXP->EXP identifier operator identifier SEMICOLON .,/return
-EXP->EXP identifier operator identifier SEMICOLON .,/while
-EXP->EXP identifier operator identifier SEMICOLON .,/{
+STATEMENT->printf ( string . ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string . ) ; ,/}
+STATEMENT->printf ( string . ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string . ,M ID_LIST ) ; ,/}
 
 I74:
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/char/float/int
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/if
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/return
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/while
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/{
+STATEMENT->scanf( string , . & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string , . & id ) ; ,/}
 
 I75:
-SEMICOLON->. ; ,/char/float/int
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/if
-SEMICOLON->. ; ,/return
-SEMICOLON->. ; ,/while
-SEMICOLON->. ; ,/{
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/char/float/int
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/identifier
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/if
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/return
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/while
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/{
+STATEMENT->{ STATEMENT_LIST } .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->{ STATEMENT_LIST } .,/}
 
 I76:
-JUDGE->JUDGE operator identifier .,/)
-JUDGE->JUDGE operator identifier .,/operator
+ID_LIST->ID_LIST , id .,/,
+ID_LIST->ID_LIST , id .,/;
 
 I77:
-JUDGE->identifier operator identifier .,/)
-JUDGE->identifier operator identifier .,/operator
+ID_LIST->id [ digit . ] ,/,
+ID_LIST->id [ digit . ] ,/;
+ID_LIST->id [ digit . ] = { DIGIT_LIST } ,/,
+ID_LIST->id [ digit . ] = { DIGIT_LIST } ,/;
 
 I78:
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/}
-EXP->EXP identifier operator identifier . SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier . SEMICOLON ,/}
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier . operator identifier SEMICOLON ,/}
+E->E . + T ,/)
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . - T ,/)
+E->E . - T ,/+
+E->E . - T ,/-
+F->( E . ) ,/)
+F->( E . ) ,/*
+F->( E . ) ,/+
+F->( E . ) ,/-
+F->( E . ) ,//
 
 I79:
-SEMICOLON->; .,/identifier
-SEMICOLON->; .,/}
+F->( E ) .,/*
+F->( E ) .,/+
+F->( E ) .,/-
+F->( E ) .,//
+F->( E ) .,/;
 
 I80:
-EXP->identifier operator identifier SEMICOLON .,/identifier
-EXP->identifier operator identifier SEMICOLON .,/}
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+E->E + . T ,/)
+E->E + . T ,/+
+E->E + . T ,/-
 
 I81:
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/identifier
-EXP->identifier operator identifier operator . identifier SEMICOLON ,/}
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+E->E - . T ,/)
+E->E - . T ,/+
+E->E - . T ,/-
 
 I82:
-SEMICOLON->. ; ,/char/float/int
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/if
-SEMICOLON->. ; ,/return
-SEMICOLON->. ; ,/while
-SEMICOLON->. ; ,/{
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/char/float/int
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/if
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/return
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/while
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/{
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->T * . F ,/)
+T->T * . F ,/*
+T->T * . F ,/+
+T->T * . F ,/-
+T->T * . F ,//
 
 I83:
-EXP->identifier operator identifier operator identifier SEMICOLON .,/char/float/int
-EXP->identifier operator identifier operator identifier SEMICOLON .,/identifier
-EXP->identifier operator identifier operator identifier SEMICOLON .,/if
-EXP->identifier operator identifier operator identifier SEMICOLON .,/return
-EXP->identifier operator identifier operator identifier SEMICOLON .,/while
-EXP->identifier operator identifier operator identifier SEMICOLON .,/{
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->T / . F ,/)
+T->T / . F ,/*
+T->T / . F ,/+
+T->T / . F ,/-
+T->T / . F ,//
 
 I84:
-EXP->EXP identifier operator identifier SEMICOLON .,/identifier
-EXP->EXP identifier operator identifier SEMICOLON .,/}
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+F->id [ . EXPRESSION ] ,/)
+F->id [ . EXPRESSION ] ,/*
+F->id [ . EXPRESSION ] ,/+
+F->id [ . EXPRESSION ] ,/-
+F->id [ . EXPRESSION ] ,//
 
 I85:
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier operator . identifier SEMICOLON ,/}
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/;
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/;
+E->E + T .,/+
+E->E + T .,/-
+E->E + T .,/;
 
 I86:
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/}
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/identifier
-EXP->identifier operator identifier operator identifier . SEMICOLON ,/}
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/;
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/;
+E->E - T .,/+
+E->E - T .,/-
+E->E - T .,/;
 
 I87:
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/char/float/int
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/identifier
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/if
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/return
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/while
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/{
+T->T * F .,/*
+T->T * F .,/+
+T->T * F .,/-
+T->T * F .,//
+T->T * F .,/;
 
 I88:
-SEMICOLON->. ; ,/identifier
-SEMICOLON->. ; ,/}
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/identifier
-EXP->EXP identifier operator identifier operator identifier . SEMICOLON ,/}
+T->T / F .,/*
+T->T / F .,/+
+T->T / F .,/-
+T->T / F .,//
+T->T / F .,/;
 
 I89:
-EXP->identifier operator identifier operator identifier SEMICOLON .,/identifier
-EXP->identifier operator identifier operator identifier SEMICOLON .,/}
+F->id [ EXPRESSION . ] ,/*
+F->id [ EXPRESSION . ] ,/+
+F->id [ EXPRESSION . ] ,/-
+F->id [ EXPRESSION . ] ,//
+F->id [ EXPRESSION . ] ,/;
 
 I90:
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/identifier
-EXP->EXP identifier operator identifier operator identifier SEMICOLON .,/}
+M->. @ ,/(/digit/id
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; . M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; . M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+
+I91:
+E->E . + T ,/)
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . - T ,/)
+E->E . - T ,/+
+E->E . - T ,/-
+F->( E . ) ,/*
+F->( E . ) ,/+
+F->( E . ) ,/-
+F->( E . ) ,//
+F->( E . ) ,/]
+
+I92:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+E->E + . T ,/+
+E->E + . T ,/-
+E->E + . T ,/]
+
+I93:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+E->E - . T ,/+
+E->E - . T ,/-
+E->E - . T ,/]
+
+I94:
+LEFT_VALUE->id [ EXPRESSION ] .,/=
+
+I95:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->T * . F ,/*
+T->T * . F ,/+
+T->T * . F ,/-
+T->T * . F ,//
+T->T * . F ,/]
+
+I96:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->T / . F ,/*
+T->T / . F ,/+
+T->T / . F ,/-
+T->T / . F ,//
+T->T / . F ,/]
+
+I97:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+F->id [ . EXPRESSION ] ,/*
+F->id [ . EXPRESSION ] ,/+
+F->id [ . EXPRESSION ] ,/-
+F->id [ . EXPRESSION ] ,//
+F->id [ . EXPRESSION ] ,/]
+
+I98:
+E->. T ,/)
+E->. T ,/+
+E->. T ,/-
+E->. E + T ,/)
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E - T ,/)
+E->. E - T ,/+
+E->. E - T ,/-
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+F->( . E ) ,/*
+F->( . E ) ,/+
+F->( . E ) ,/-
+F->( . E ) ,//
+F->( . E ) ,/</<=/==/>/>=
+
+I99:
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . + T ,/</<=/==/>/>=
+E->E . - T ,/+
+E->E . - T ,/-
+E->E . - T ,/</<=/==/>/>=
+EXPRESSION->E .,/</<=/==/>/>=
+
+I100:
+RELATION_OP->. < ,/(/digit/id
+RELATION_OP->. <= ,/(/digit/id
+RELATION_OP->. == ,/(/digit/id
+RELATION_OP->. > ,/(/digit/id
+RELATION_OP->. >= ,/(/digit/id
+RELATION_EXPRESSION->EXPRESSION . RELATION_OP EXPRESSION ,/)
+
+I101:
+T->F .,/*
+T->F .,/+
+T->F .,/-
+T->F .,//
+T->F .,/</<=/==/>/>=
+
+I102:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION . ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION . ) STATEMENT M else STATEMENT ,/}
+
+I103:
+E->T .,/+
+E->T .,/-
+E->T .,/</<=/==/>/>=
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/</<=/==/>/>=
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/</<=/==/>/>=
+
+I104:
+F->digit .,/*
+F->digit .,/+
+F->digit .,/-
+F->digit .,//
+F->digit .,/</<=/==/>/>=
+
+I105:
+F->id .,/*
+F->id .,/+
+F->id .,/-
+F->id .,//
+F->id .,/</<=/==/>/>=
+F->id . [ EXPRESSION ] ,/*
+F->id . [ EXPRESSION ] ,/+
+F->id . [ EXPRESSION ] ,/-
+F->id . [ EXPRESSION ] ,//
+F->id . [ EXPRESSION ] ,/</<=/==/>/>=
+
+I106:
+STATEMENT->printf ( string ) . ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ) . ; ,/}
+
+I107:
+ID_LIST->. id ,/)
+ID_LIST->. id ,/,
+ID_LIST->. ID_LIST , id ,/)
+ID_LIST->. ID_LIST , id ,/,
+ID_LIST->. id [ digit ] ,/)
+ID_LIST->. id [ digit ] ,/,
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/)
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/,
+STATEMENT->printf ( string ,M . ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ,M . ID_LIST ) ; ,/}
+
+I108:
+STATEMENT->scanf( string , & . id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string , & . id ) ; ,/}
+
+I109:
+ID_LIST->id [ digit ] .,/,
+ID_LIST->id [ digit ] .,/;
+ID_LIST->id [ digit ] . = { DIGIT_LIST } ,/,
+ID_LIST->id [ digit ] . = { DIGIT_LIST } ,/;
+
+I110:
+F->( E ) .,/)
+F->( E ) .,/*
+F->( E ) .,/+
+F->( E ) .,/-
+F->( E ) .,//
+
+I111:
+T->T . * F ,/)
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . / F ,/)
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+E->E + T .,/)
+E->E + T .,/+
+E->E + T .,/-
+
+I112:
+T->T . * F ,/)
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . / F ,/)
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+E->E - T .,/)
+E->E - T .,/+
+E->E - T .,/-
+
+I113:
+T->T * F .,/)
+T->T * F .,/*
+T->T * F .,/+
+T->T * F .,/-
+T->T * F .,//
+
+I114:
+T->T / F .,/)
+T->T / F .,/*
+T->T / F .,/+
+T->T / F .,/-
+T->T / F .,//
+
+I115:
+F->id [ EXPRESSION . ] ,/)
+F->id [ EXPRESSION . ] ,/*
+F->id [ EXPRESSION . ] ,/+
+F->id [ EXPRESSION . ] ,/-
+F->id [ EXPRESSION . ] ,//
+
+I116:
+F->id [ EXPRESSION ] .,/*
+F->id [ EXPRESSION ] .,/+
+F->id [ EXPRESSION ] .,/-
+F->id [ EXPRESSION ] .,//
+F->id [ EXPRESSION ] .,/;
+
+I117:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/</<=/==/>/>=
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/</<=/==/>/>=
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/</<=/==/>/>=
+EXPRESSION->. E ,/</<=/==/>/>=
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+RELATION_EXPRESSION->. EXPRESSION RELATION_OP EXPRESSION ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M . RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M . RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+
+I118:
+F->( E ) .,/*
+F->( E ) .,/+
+F->( E ) .,/-
+F->( E ) .,//
+F->( E ) .,/]
+
+I119:
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/]
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/]
+E->E + T .,/+
+E->E + T .,/-
+E->E + T .,/]
+
+I120:
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/]
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/]
+E->E - T .,/+
+E->E - T .,/-
+E->E - T .,/]
+
+I121:
+T->T * F .,/*
+T->T * F .,/+
+T->T * F .,/-
+T->T * F .,//
+T->T * F .,/]
+
+I122:
+T->T / F .,/*
+T->T / F .,/+
+T->T / F .,/-
+T->T / F .,//
+T->T / F .,/]
+
+I123:
+F->id [ EXPRESSION . ] ,/*
+F->id [ EXPRESSION . ] ,/+
+F->id [ EXPRESSION . ] ,/-
+F->id [ EXPRESSION . ] ,//
+F->id [ EXPRESSION . ] ,/]
+
+I124:
+E->E . + T ,/)
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . - T ,/)
+E->E . - T ,/+
+E->E . - T ,/-
+F->( E . ) ,/*
+F->( E . ) ,/+
+F->( E . ) ,/-
+F->( E . ) ,//
+F->( E . ) ,/</<=/==/>/>=
+
+I125:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+E->E + . T ,/+
+E->E + . T ,/-
+E->E + . T ,/</<=/==/>/>=
+
+I126:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+E->E - . T ,/+
+E->E - . T ,/-
+E->E - . T ,/</<=/==/>/>=
+
+I127:
+RELATION_OP->< .,/(/digit/id
+
+I128:
+RELATION_OP-><= .,/(/digit/id
+
+I129:
+RELATION_OP->== .,/(/digit/id
+
+I130:
+RELATION_OP->> .,/(/digit/id
+
+I131:
+RELATION_OP->>= .,/(/digit/id
+
+I132:
+E->. T ,/)
+E->. T ,/+
+E->. T ,/-
+E->. E + T ,/)
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E - T ,/)
+E->. E - T ,/+
+E->. E - T ,/-
+EXPRESSION->. E ,/)
+F->. digit ,/)
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. id ,/)
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. ( E ) ,/)
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. id [ EXPRESSION ] ,/)
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+T->. F ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. T * F ,/)
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T / F ,/)
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+RELATION_EXPRESSION->EXPRESSION RELATION_OP . EXPRESSION ,/)
+
+I133:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+STATEMENT->. ITERATION_EXPRESSION ,/else
+STATEMENT->. SELECTION_STATEMENT ,/else
+STATEMENT->. ASSIGN_EXPRESSION ; ,/else
+STATEMENT->. RETURN EXPRESSION ; ,/else
+STATEMENT->. { STATEMENT_LIST } ,/else
+STATEMENT->. printf ( string ) ; ,/else
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/else
+STATEMENT->. scanf( string , & id ) ; ,/else
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) . STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) . STATEMENT M else STATEMENT ,/}
+
+I134:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+T->T * . F ,/*
+T->T * . F ,/+
+T->T * . F ,/-
+T->T * . F ,//
+T->T * . F ,/</<=/==/>/>=
+
+I135:
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+T->T / . F ,/*
+T->T / . F ,/+
+T->T / . F ,/-
+T->T / . F ,//
+T->T / . F ,/</<=/==/>/>=
+
+I136:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+F->id [ . EXPRESSION ] ,/*
+F->id [ . EXPRESSION ] ,/+
+F->id [ . EXPRESSION ] ,/-
+F->id [ . EXPRESSION ] ,//
+F->id [ . EXPRESSION ] ,/</<=/==/>/>=
+
+I137:
+STATEMENT->printf ( string ) ; .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ) ; .,/}
+
+I138:
+ID_LIST->ID_LIST . , id ,/)
+ID_LIST->ID_LIST . , id ,/,
+STATEMENT->printf ( string ,M ID_LIST . ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ,M ID_LIST . ) ; ,/}
+
+I139:
+ID_LIST->id .,/)
+ID_LIST->id .,/,
+ID_LIST->id . [ digit ] ,/)
+ID_LIST->id . [ digit ] ,/,
+ID_LIST->id . [ digit ] = { DIGIT_LIST } ,/)
+ID_LIST->id . [ digit ] = { DIGIT_LIST } ,/,
+
+I140:
+STATEMENT->scanf( string , & id . ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string , & id . ) ; ,/}
+
+I141:
+ID_LIST->id [ digit ] = . { DIGIT_LIST } ,/,
+ID_LIST->id [ digit ] = . { DIGIT_LIST } ,/;
+
+I142:
+F->id [ EXPRESSION ] .,/)
+F->id [ EXPRESSION ] .,/*
+F->id [ EXPRESSION ] .,/+
+F->id [ EXPRESSION ] .,/-
+F->id [ EXPRESSION ] .,//
+
+I143:
+RELATION_OP->. < ,/(/digit/id
+RELATION_OP->. <= ,/(/digit/id
+RELATION_OP->. == ,/(/digit/id
+RELATION_OP->. > ,/(/digit/id
+RELATION_OP->. >= ,/(/digit/id
+RELATION_EXPRESSION->EXPRESSION . RELATION_OP EXPRESSION ,/;
+
+I144:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION . ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION . ; M INC_EXPRESSION ) STATEMENT ,/}
+
+I145:
+F->id [ EXPRESSION ] .,/*
+F->id [ EXPRESSION ] .,/+
+F->id [ EXPRESSION ] .,/-
+F->id [ EXPRESSION ] .,//
+F->id [ EXPRESSION ] .,/]
+
+I146:
+F->( E ) .,/*
+F->( E ) .,/+
+F->( E ) .,/-
+F->( E ) .,//
+F->( E ) .,/</<=/==/>/>=
+
+I147:
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/</<=/==/>/>=
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/</<=/==/>/>=
+E->E + T .,/+
+E->E + T .,/-
+E->E + T .,/</<=/==/>/>=
+
+I148:
+T->T . * F ,/*
+T->T . * F ,/+
+T->T . * F ,/-
+T->T . * F ,//
+T->T . * F ,/</<=/==/>/>=
+T->T . / F ,/*
+T->T . / F ,/+
+T->T . / F ,/-
+T->T . / F ,//
+T->T . / F ,/</<=/==/>/>=
+E->E - T .,/+
+E->E - T .,/-
+E->E - T .,/</<=/==/>/>=
+
+I149:
+E->E . + T ,/)
+E->E . + T ,/+
+E->E . + T ,/-
+E->E . - T ,/)
+E->E . - T ,/+
+E->E . - T ,/-
+EXPRESSION->E .,/)
+
+I150:
+RELATION_EXPRESSION->EXPRESSION RELATION_OP EXPRESSION .,/)
+
+I151:
+STATEMENT->ASSIGN_EXPRESSION . ; ,/else
+
+I152:
+STATEMENT->ITERATION_EXPRESSION .,/else
+
+I153:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/;
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/;
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/;
+EXPRESSION->. E ,/;
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+STATEMENT->RETURN . EXPRESSION ; ,/else
+
+I154:
+STATEMENT->SELECTION_STATEMENT .,/else
+
+I155:
+M->. @ ,/else
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT . M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT . M else STATEMENT ,/}
+
+I156:
+ITERATION_EXPRESSION->for . ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I157:
+SELECTION_STATEMENT->if . ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+
+I158:
+STATEMENT->printf . ( string ) ; ,/else
+STATEMENT->printf . ( string ,M ID_LIST ) ; ,/else
+
+I159:
+STATEMENT->scanf( . string , & id ) ; ,/else
+
+I160:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->. STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT ,/}
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->. STATEMENT_LIST STATEMENT ,/}
+STATEMENT->{ . STATEMENT_LIST } ,/else
+
+I161:
+T->T * F .,/*
+T->T * F .,/+
+T->T * F .,/-
+T->T * F .,//
+T->T * F .,/</<=/==/>/>=
+
+I162:
+T->T / F .,/*
+T->T / F .,/+
+T->T / F .,/-
+T->T / F .,//
+T->T / F .,/</<=/==/>/>=
+
+I163:
+F->id [ EXPRESSION . ] ,/*
+F->id [ EXPRESSION . ] ,/+
+F->id [ EXPRESSION . ] ,/-
+F->id [ EXPRESSION . ] ,//
+F->id [ EXPRESSION . ] ,/</<=/==/>/>=
+
+I164:
+STATEMENT->printf ( string ,M ID_LIST ) . ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ,M ID_LIST ) . ; ,/}
+
+I165:
+ID_LIST->ID_LIST , . id ,/)
+ID_LIST->ID_LIST , . id ,/,
+
+I166:
+ID_LIST->id [ . digit ] ,/)
+ID_LIST->id [ . digit ] ,/,
+ID_LIST->id [ . digit ] = { DIGIT_LIST } ,/)
+ID_LIST->id [ . digit ] = { DIGIT_LIST } ,/,
+
+I167:
+STATEMENT->scanf( string , & id ) . ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string , & id ) . ; ,/}
+
+I168:
+DIGIT_LIST->. digit ,/,
+DIGIT_LIST->. digit ,/}
+DIGIT_LIST->. DIGIT_LIST , digit ,/,
+DIGIT_LIST->. DIGIT_LIST , digit ,/}
+ID_LIST->id [ digit ] = { . DIGIT_LIST } ,/,
+ID_LIST->id [ digit ] = { . DIGIT_LIST } ,/;
+
+I169:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/;
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/;
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/;
+EXPRESSION->. E ,/;
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/;
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/;
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/;
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/;
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/;
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/;
+RELATION_EXPRESSION->EXPRESSION RELATION_OP . EXPRESSION ,/;
+
+I170:
+M->. @ ,/id
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; . M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; . M INC_EXPRESSION ) STATEMENT ,/}
+
+I171:
+STATEMENT->ASSIGN_EXPRESSION ; .,/else
+
+I172:
+STATEMENT->RETURN EXPRESSION . ; ,/else
+
+I173:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M . else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M . else STATEMENT ,/}
+
+I174:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+ITERATION_EXPRESSION->for ( . ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I175:
+M->. @ ,/(/digit/id
+SELECTION_STATEMENT->if ( . M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+
+I176:
+STATEMENT->printf ( . string ) ; ,/else
+STATEMENT->printf ( . string ,M ID_LIST ) ; ,/else
+
+I177:
+STATEMENT->scanf( string . , & id ) ; ,/else
+
+I178:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT_LIST->STATEMENT_LIST . STATEMENT ,/}
+STATEMENT->{ STATEMENT_LIST . } ,/else
+
+I179:
+F->id [ EXPRESSION ] .,/*
+F->id [ EXPRESSION ] .,/+
+F->id [ EXPRESSION ] .,/-
+F->id [ EXPRESSION ] .,//
+F->id [ EXPRESSION ] .,/</<=/==/>/>=
+
+I180:
+STATEMENT->printf ( string ,M ID_LIST ) ; .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->printf ( string ,M ID_LIST ) ; .,/}
+
+I181:
+ID_LIST->ID_LIST , id .,/)
+ID_LIST->ID_LIST , id .,/,
+
+I182:
+ID_LIST->id [ digit . ] ,/)
+ID_LIST->id [ digit . ] ,/,
+ID_LIST->id [ digit . ] = { DIGIT_LIST } ,/)
+ID_LIST->id [ digit . ] = { DIGIT_LIST } ,/,
+
+I183:
+STATEMENT->scanf( string , & id ) ; .,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->scanf( string , & id ) ; .,/}
+
+I184:
+DIGIT_LIST->DIGIT_LIST . , digit ,/,
+DIGIT_LIST->DIGIT_LIST . , digit ,/}
+ID_LIST->id [ digit ] = { DIGIT_LIST . } ,/,
+ID_LIST->id [ digit ] = { DIGIT_LIST . } ,/;
+
+I185:
+DIGIT_LIST->digit .,/,
+DIGIT_LIST->digit .,/}
+
+I186:
+RELATION_EXPRESSION->EXPRESSION RELATION_OP EXPRESSION .,/;
+
+I187:
+INC_EXPRESSION->. LEFT_VALUE ++ ,/)
+LEFT_VALUE->. id ,/++
+LEFT_VALUE->. id [ EXPRESSION ] ,/++
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M . INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M . INC_EXPRESSION ) STATEMENT ,/}
+
+I188:
+STATEMENT->RETURN EXPRESSION ; .,/else
+
+I189:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else . STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else . STATEMENT ,/}
+
+I190:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION . ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I191:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/</<=/==/>/>=
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/</<=/==/>/>=
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/</<=/==/>/>=
+EXPRESSION->. E ,/</<=/==/>/>=
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+RELATION_EXPRESSION->. EXPRESSION RELATION_OP EXPRESSION ,/)
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+SELECTION_STATEMENT->if ( M . RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+
+I192:
+STATEMENT->printf ( string . ) ; ,/else
+STATEMENT->printf ( string . ,M ID_LIST ) ; ,/else
+
+I193:
+STATEMENT->scanf( string , . & id ) ; ,/else
+
+I194:
+STATEMENT->{ STATEMENT_LIST } .,/else
+
+I195:
+ID_LIST->id [ digit ] .,/)
+ID_LIST->id [ digit ] .,/,
+ID_LIST->id [ digit ] . = { DIGIT_LIST } ,/)
+ID_LIST->id [ digit ] . = { DIGIT_LIST } ,/,
+
+I196:
+DIGIT_LIST->DIGIT_LIST , . digit ,/,
+DIGIT_LIST->DIGIT_LIST , . digit ,/}
+
+I197:
+ID_LIST->id [ digit ] = { DIGIT_LIST } .,/,
+ID_LIST->id [ digit ] = { DIGIT_LIST } .,/;
+
+I198:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION . ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION . ) STATEMENT ,/}
+
+I199:
+INC_EXPRESSION->LEFT_VALUE . ++ ,/)
+
+I200:
+LEFT_VALUE->id .,/++
+LEFT_VALUE->id . [ EXPRESSION ] ,/++
+
+I201:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT .,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT .,/}
+
+I202:
+M->. @ ,/(/digit/id
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; . M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I203:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION . ) STATEMENT M else STATEMENT ,/else
+
+I204:
+STATEMENT->printf ( string ) . ; ,/else
+
+I205:
+ID_LIST->. id ,/)
+ID_LIST->. id ,/,
+ID_LIST->. ID_LIST , id ,/)
+ID_LIST->. ID_LIST , id ,/,
+ID_LIST->. id [ digit ] ,/)
+ID_LIST->. id [ digit ] ,/,
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/)
+ID_LIST->. id [ digit ] = { DIGIT_LIST } ,/,
+STATEMENT->printf ( string ,M . ID_LIST ) ; ,/else
+
+I206:
+STATEMENT->scanf( string , & . id ) ; ,/else
+
+I207:
+ID_LIST->id [ digit ] = . { DIGIT_LIST } ,/)
+ID_LIST->id [ digit ] = . { DIGIT_LIST } ,/,
+
+I208:
+DIGIT_LIST->DIGIT_LIST , digit .,/,
+DIGIT_LIST->DIGIT_LIST , digit .,/}
+
+I209:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/}
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/}
+STATEMENT->. ITERATION_EXPRESSION ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ITERATION_EXPRESSION ,/}
+STATEMENT->. SELECTION_STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. SELECTION_STATEMENT ,/}
+STATEMENT->. ASSIGN_EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. ASSIGN_EXPRESSION ; ,/}
+STATEMENT->. RETURN EXPRESSION ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. RETURN EXPRESSION ; ,/}
+STATEMENT->. { STATEMENT_LIST } ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. { STATEMENT_LIST } ,/}
+STATEMENT->. printf ( string ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ) ; ,/}
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/}
+STATEMENT->. scanf( string , & id ) ; ,/(/digit/for/id/if/printf/scanf(/{
+STATEMENT->. scanf( string , & id ) ; ,/}
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) . STATEMENT ,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) . STATEMENT ,/}
+
+I210:
+INC_EXPRESSION->LEFT_VALUE ++ .,/)
+
+I211:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/]
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/]
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/]
+EXPRESSION->. E ,/]
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/]
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/]
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/]
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/]
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/]
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/]
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/]
+LEFT_VALUE->id [ . EXPRESSION ] ,/++
+
+I212:
+E->. T ,/+
+E->. T ,/-
+E->. T ,/</<=/==/>/>=
+E->. E + T ,/+
+E->. E + T ,/-
+E->. E + T ,/</<=/==/>/>=
+E->. E - T ,/+
+E->. E - T ,/-
+E->. E - T ,/</<=/==/>/>=
+EXPRESSION->. E ,/</<=/==/>/>=
+F->. digit ,/*
+F->. digit ,/+
+F->. digit ,/-
+F->. digit ,//
+F->. digit ,/</<=/==/>/>=
+F->. id ,/*
+F->. id ,/+
+F->. id ,/-
+F->. id ,//
+F->. id ,/</<=/==/>/>=
+F->. ( E ) ,/*
+F->. ( E ) ,/+
+F->. ( E ) ,/-
+F->. ( E ) ,//
+F->. ( E ) ,/</<=/==/>/>=
+F->. id [ EXPRESSION ] ,/*
+F->. id [ EXPRESSION ] ,/+
+F->. id [ EXPRESSION ] ,/-
+F->. id [ EXPRESSION ] ,//
+F->. id [ EXPRESSION ] ,/</<=/==/>/>=
+RELATION_EXPRESSION->. EXPRESSION RELATION_OP EXPRESSION ,/;
+T->. F ,/*
+T->. F ,/+
+T->. F ,/-
+T->. F ,//
+T->. F ,/</<=/==/>/>=
+T->. T * F ,/*
+T->. T * F ,/+
+T->. T * F ,/-
+T->. T * F ,//
+T->. T * F ,/</<=/==/>/>=
+T->. T / F ,/*
+T->. T / F ,/+
+T->. T / F ,/-
+T->. T / F ,//
+T->. T / F ,/</<=/==/>/>=
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M . RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I213:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+STATEMENT->. ITERATION_EXPRESSION ,/else
+STATEMENT->. SELECTION_STATEMENT ,/else
+STATEMENT->. ASSIGN_EXPRESSION ; ,/else
+STATEMENT->. RETURN EXPRESSION ; ,/else
+STATEMENT->. { STATEMENT_LIST } ,/else
+STATEMENT->. printf ( string ) ; ,/else
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/else
+STATEMENT->. scanf( string , & id ) ; ,/else
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) . STATEMENT M else STATEMENT ,/else
+
+I214:
+STATEMENT->printf ( string ) ; .,/else
+
+I215:
+ID_LIST->ID_LIST . , id ,/)
+ID_LIST->ID_LIST . , id ,/,
+STATEMENT->printf ( string ,M ID_LIST . ) ; ,/else
+
+I216:
+STATEMENT->scanf( string , & id . ) ; ,/else
+
+I217:
+DIGIT_LIST->. digit ,/,
+DIGIT_LIST->. digit ,/}
+DIGIT_LIST->. DIGIT_LIST , digit ,/,
+DIGIT_LIST->. DIGIT_LIST , digit ,/}
+ID_LIST->id [ digit ] = { . DIGIT_LIST } ,/)
+ID_LIST->id [ digit ] = { . DIGIT_LIST } ,/,
+
+I218:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT .,/(/digit/for/id/if/printf/scanf(/{
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT .,/}
+
+I219:
+LEFT_VALUE->id [ EXPRESSION . ] ,/++
+
+I220:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION . ; M INC_EXPRESSION ) STATEMENT ,/else
+
+I221:
+M->. @ ,/else
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT . M else STATEMENT ,/else
+
+I222:
+STATEMENT->printf ( string ,M ID_LIST ) . ; ,/else
+
+I223:
+STATEMENT->scanf( string , & id ) . ; ,/else
+
+I224:
+DIGIT_LIST->DIGIT_LIST . , digit ,/,
+DIGIT_LIST->DIGIT_LIST . , digit ,/}
+ID_LIST->id [ digit ] = { DIGIT_LIST . } ,/)
+ID_LIST->id [ digit ] = { DIGIT_LIST . } ,/,
+
+I225:
+LEFT_VALUE->id [ EXPRESSION ] .,/++
+
+I226:
+M->. @ ,/id
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; . M INC_EXPRESSION ) STATEMENT ,/else
+
+I227:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M . else STATEMENT ,/else
+
+I228:
+STATEMENT->printf ( string ,M ID_LIST ) ; .,/else
+
+I229:
+STATEMENT->scanf( string , & id ) ; .,/else
+
+I230:
+ID_LIST->id [ digit ] = { DIGIT_LIST } .,/)
+ID_LIST->id [ digit ] = { DIGIT_LIST } .,/,
+
+I231:
+INC_EXPRESSION->. LEFT_VALUE ++ ,/)
+LEFT_VALUE->. id ,/++
+LEFT_VALUE->. id [ EXPRESSION ] ,/++
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M . INC_EXPRESSION ) STATEMENT ,/else
+
+I232:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+STATEMENT->. ITERATION_EXPRESSION ,/else
+STATEMENT->. SELECTION_STATEMENT ,/else
+STATEMENT->. ASSIGN_EXPRESSION ; ,/else
+STATEMENT->. RETURN EXPRESSION ; ,/else
+STATEMENT->. { STATEMENT_LIST } ,/else
+STATEMENT->. printf ( string ) ; ,/else
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/else
+STATEMENT->. scanf( string , & id ) ; ,/else
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else . STATEMENT ,/else
+
+I233:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION . ) STATEMENT ,/else
+
+I234:
+SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT .,/else
+
+I235:
+ASSIGN_EXPRESSION->. LEFT_VALUE = EXPRESSION ,/;
+ITERATION_EXPRESSION->. for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT ,/else
+LEFT_VALUE->. id ,/=
+LEFT_VALUE->. id [ EXPRESSION ] ,/=
+SELECTION_STATEMENT->. if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT ,/else
+STATEMENT->. ITERATION_EXPRESSION ,/else
+STATEMENT->. SELECTION_STATEMENT ,/else
+STATEMENT->. ASSIGN_EXPRESSION ; ,/else
+STATEMENT->. RETURN EXPRESSION ; ,/else
+STATEMENT->. { STATEMENT_LIST } ,/else
+STATEMENT->. printf ( string ) ; ,/else
+STATEMENT->. printf ( string ,M ID_LIST ) ; ,/else
+STATEMENT->. scanf( string , & id ) ; ,/else
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) . STATEMENT ,/else
+
+I236:
+ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT .,/else
 

@@ -1,169 +1,1009 @@
 -------------0----------------
-int main ( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
-int :2		
+int qqq ( ) { float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :4		
 move in: int
 -------------end----------------
 
 -------------1----------------
-main ( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
-main :3		
-move in: int main
+qqq ( ) { float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+qqq :6		
+move in: int qqq
 -------------end----------------
 
 -------------2----------------
-( ) { int abc123 ; abc123 = 12 ; return 0 ; } #
-( :4		
-move in: int main (
+( ) { float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+( :7		
+move in: int qqq (
 -------------end----------------
 
 -------------3----------------
-) { int abc123 ; abc123 = 12 ; return 0 ; } #
-) :5		
-move in: int main ( )
+) { float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :8		
+move in: int qqq ( )
 -------------end----------------
 
 -------------4----------------
-{ int abc123 ; abc123 = 12 ; return 0 ; } #
-{ :6		
-move in: int main ( ) {
+{ float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+{ :9		
+move in: int qqq ( ) {
 -------------end----------------
 
 -------------5----------------
-int abc123 ; abc123 = 12 ; return 0 ; } #
-int :23		
-move in: int main ( ) { int
+float a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+float :13		
+move in: int qqq ( ) { float
 -------------end----------------
 
 -------------6----------------
-abc123 ; abc123 = 12 ; return 0 ; } #
-abc123 :45		
-move in: int main ( ) { int abc123
+a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :1048585		
+reduce: TYPE_SPECIFIER->float 
+int qqq ( ) { TYPE_SPECIFIER
 -------------end----------------
 
 -------------7----------------
-; abc123 = 12 ; return 0 ; } #
-; :1048596		
-reduce: VARLIST->int identifier 
-int main ( ) { VARLIST
+a ; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :30		
+move in: int qqq ( ) { TYPE_SPECIFIER a
 -------------end----------------
 
 -------------8----------------
-; abc123 = 12 ; return 0 ; } #
-; :38		
-move in: int main ( ) { VARLIST ;
+; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048587		
+reduce: ID_LIST->id 
+int qqq ( ) { TYPE_SPECIFIER ID_LIST
 -------------end----------------
 
 -------------9----------------
-abc123 = 12 ; return 0 ; } #
-abc123 :1048595		
-reduce: SEMICOLON->; 
-int main ( ) { VARLIST SEMICOLON
+; int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :49		
+move in: int qqq ( ) { TYPE_SPECIFIER ID_LIST ;
 -------------end----------------
 
 -------------10----------------
-abc123 = 12 ; return 0 ; } #
-abc123 :1048594		
-reduce: STATEMENT->VARLIST SEMICOLON 
-int main ( ) { STATEMENT
+int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :1048583		
+reduce: DECLARATION->TYPE_SPECIFIER ID_LIST ; 
+int qqq ( ) { DECLARATION
 -------------end----------------
 
 -------------11----------------
-abc123 = 12 ; return 0 ; } #
-abc123 :1048581		
-reduce: PROGRAM->STATEMENT 
-int main ( ) { PROGRAM
+int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :1048582		
+reduce: DECLARATION_STATEMENT->DECLARATION 
+int qqq ( ) { DECLARATION_STATEMENT
 -------------end----------------
 
 -------------12----------------
-abc123 = 12 ; return 0 ; } #
-abc123 :21		
-move in: int main ( ) { PROGRAM abc123
+int b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :14		
+move in: int qqq ( ) { DECLARATION_STATEMENT int
 -------------end----------------
 
 -------------13----------------
-= 12 ; return 0 ; } #
-= :43		
-move in: int main ( ) { PROGRAM abc123 =
+b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :1048584		
+reduce: TYPE_SPECIFIER->int 
+int qqq ( ) { DECLARATION_STATEMENT TYPE_SPECIFIER
 -------------end----------------
 
 -------------14----------------
-12 ; return 0 ; } #
-12 :54		
-move in: int main ( ) { PROGRAM abc123 = 12
+b ; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :30		
+move in: int qqq ( ) { DECLARATION_STATEMENT TYPE_SPECIFIER b
 -------------end----------------
 
 -------------15----------------
-; return 0 ; } #
-; :38		
-move in: int main ( ) { PROGRAM abc123 = 12 ;
+; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048587		
+reduce: ID_LIST->id 
+int qqq ( ) { DECLARATION_STATEMENT TYPE_SPECIFIER ID_LIST
 -------------end----------------
 
 -------------16----------------
-return 0 ; } #
-return :1048595		
-reduce: SEMICOLON->; 
-int main ( ) { PROGRAM abc123 = 12 SEMICOLON
+; for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :49		
+move in: int qqq ( ) { DECLARATION_STATEMENT TYPE_SPECIFIER ID_LIST ;
 -------------end----------------
 
 -------------17----------------
-return 0 ; } #
-return :1048592		
-reduce: EXP->identifier operator identifier SEMICOLON 
-int main ( ) { PROGRAM EXP
+for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+for :1048583		
+reduce: DECLARATION->TYPE_SPECIFIER ID_LIST ; 
+int qqq ( ) { DECLARATION_STATEMENT DECLARATION
 -------------end----------------
 
 -------------18----------------
-return 0 ; } #
-return :1048582		
-reduce: PROGRAM->PROGRAM EXP 
-int main ( ) { PROGRAM
+for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+for :1048581		
+reduce: DECLARATION_STATEMENT->DECLARATION_STATEMENT DECLARATION 
+int qqq ( ) { DECLARATION_STATEMENT
 -------------end----------------
 
 -------------19----------------
-return 0 ; } #
-return :24		
-move in: int main ( ) { PROGRAM return
+for ( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+for :23		
+move in: int qqq ( ) { DECLARATION_STATEMENT for
 -------------end----------------
 
 -------------20----------------
-0 ; } #
-0 :46		
-move in: int main ( ) { PROGRAM return 0
+( b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+( :42		
+move in: int qqq ( ) { DECLARATION_STATEMENT for (
 -------------end----------------
 
 -------------21----------------
-; } #
-; :57		
-move in: int main ( ) { PROGRAM return 0 ;
+b = 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :24		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( b
 -------------end----------------
 
 -------------22----------------
-} #
-} :69		
-move in: int main ( ) { PROGRAM return 0 ; }
+= 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+= :1048611		
+reduce: LEFT_VALUE->id 
+int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE
 -------------end----------------
 
 -------------23----------------
-#
-# :1048609		
-reduce: END->return const ; } 
-int main ( ) { PROGRAM END
+= 1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+= :32		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE =
 -------------end----------------
 
 -------------24----------------
-#
-# :1048578		
-reduce: MAIN->PROGRAM END 
-int main ( ) { MAIN
+1 ; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+1 :38		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE = 1
 -------------end----------------
 
 -------------25----------------
-#
-# :1048577		
-reduce: S->int identifier ( ) { MAIN 
-S
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048607		
+reduce: F->digit 
+int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE = F
 -------------end----------------
 
 -------------26----------------
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048605		
+reduce: T->F 
+int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE = T
+-------------end----------------
+
+-------------27----------------
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048602		
+reduce: E->T 
+int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE = E
+-------------end----------------
+
+-------------28----------------
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048599		
+reduce: EXPRESSION->E 
+int qqq ( ) { DECLARATION_STATEMENT for ( LEFT_VALUE = EXPRESSION
+-------------end----------------
+
+-------------29----------------
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048610		
+reduce: ASSIGN_EXPRESSION->LEFT_VALUE = EXPRESSION 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION
+-------------end----------------
+
+-------------30----------------
+; b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :90		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ;
+-------------end----------------
+
+-------------31----------------
+b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :1048625		
+reduce: M->
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M
+-------------end----------------
+
+-------------32----------------
+b < 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :105		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M b
+-------------end----------------
+
+-------------33----------------
+< 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+< :1048608		
+reduce: F->id 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M F
+-------------end----------------
+
+-------------34----------------
+< 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+< :1048605		
+reduce: T->F 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M T
+-------------end----------------
+
+-------------35----------------
+< 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+< :1048602		
+reduce: E->T 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M E
+-------------end----------------
+
+-------------36----------------
+< 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+< :1048599		
+reduce: EXPRESSION->E 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION
+-------------end----------------
+
+-------------37----------------
+< 10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+< :127		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION <
+-------------end----------------
+
+-------------38----------------
+10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+10 :1048615		
+reduce: RELATION_OP->< 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP
+-------------end----------------
+
+-------------39----------------
+10 ; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+10 :38		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP 10
+-------------end----------------
+
+-------------40----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048607		
+reduce: F->digit 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP F
+-------------end----------------
+
+-------------41----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048605		
+reduce: T->F 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP T
+-------------end----------------
+
+-------------42----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048602		
+reduce: E->T 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP E
+-------------end----------------
+
+-------------43----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048599		
+reduce: EXPRESSION->E 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M EXPRESSION RELATION_OP EXPRESSION
+-------------end----------------
+
+-------------44----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048614		
+reduce: RELATION_EXPRESSION->EXPRESSION RELATION_OP EXPRESSION 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION
+-------------end----------------
+
+-------------45----------------
+; b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :170		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ;
+-------------end----------------
+
+-------------46----------------
+b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :1048625		
+reduce: M->
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M
+-------------end----------------
+
+-------------47----------------
+b ++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :200		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M b
+-------------end----------------
+
+-------------48----------------
+++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+++ :1048611		
+reduce: LEFT_VALUE->id 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M LEFT_VALUE
+-------------end----------------
+
+-------------49----------------
+++ ) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+++ :210		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M LEFT_VALUE ++
+-------------end----------------
+
+-------------50----------------
+) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048620		
+reduce: INC_EXPRESSION->LEFT_VALUE ++ 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION
+-------------end----------------
+
+-------------51----------------
+) a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :209		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION )
+-------------end----------------
+
+-------------52----------------
+a = b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :24		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) a
+-------------end----------------
+
+-------------53----------------
+= b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+= :1048611		
+reduce: LEFT_VALUE->id 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE
+-------------end----------------
+
+-------------54----------------
+= b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+= :32		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE =
+-------------end----------------
+
+-------------55----------------
+b ; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+b :39		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE = b
+-------------end----------------
+
+-------------56----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048608		
+reduce: F->id 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE = F
+-------------end----------------
+
+-------------57----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048605		
+reduce: T->F 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE = T
+-------------end----------------
+
+-------------58----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048602		
+reduce: E->T 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE = E
+-------------end----------------
+
+-------------59----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048599		
+reduce: EXPRESSION->E 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) LEFT_VALUE = EXPRESSION
+-------------end----------------
+
+-------------60----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048610		
+reduce: ASSIGN_EXPRESSION->LEFT_VALUE = EXPRESSION 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) ASSIGN_EXPRESSION
+-------------end----------------
+
+-------------61----------------
+; } int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :31		
+move in: int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) ASSIGN_EXPRESSION ;
+-------------end----------------
+
+-------------62----------------
+} int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+} :1048595		
+reduce: STATEMENT->ASSIGN_EXPRESSION ; 
+int qqq ( ) { DECLARATION_STATEMENT for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT
+-------------end----------------
+
+-------------63----------------
+} int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+} :1048613		
+reduce: ITERATION_EXPRESSION->for ( ASSIGN_EXPRESSION ; M RELATION_EXPRESSION ; M INC_EXPRESSION ) STATEMENT 
+int qqq ( ) { DECLARATION_STATEMENT ITERATION_EXPRESSION
+-------------end----------------
+
+-------------64----------------
+} int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+} :1048596		
+reduce: STATEMENT->ITERATION_EXPRESSION 
+int qqq ( ) { DECLARATION_STATEMENT STATEMENT
+-------------end----------------
+
+-------------65----------------
+} int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+} :1048593		
+reduce: STATEMENT_LIST->STATEMENT 
+int qqq ( ) { DECLARATION_STATEMENT STATEMENT_LIST
+-------------end----------------
+
+-------------66----------------
+} int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+} :41		
+move in: int qqq ( ) { DECLARATION_STATEMENT STATEMENT_LIST }
+-------------end----------------
+
+-------------67----------------
+int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :1048580		
+reduce: PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } 
+PROGRAM
+-------------end----------------
+
+-------------68----------------
+int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :1048579		
+reduce: PROGRAM_LIST->PROGRAM 
+PROGRAM_LIST
+-------------end----------------
+
+-------------69----------------
+int main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :4		
+move in: PROGRAM_LIST int
+-------------end----------------
+
+-------------70----------------
+main ( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+main :6		
+move in: PROGRAM_LIST int main
+-------------end----------------
+
+-------------71----------------
+( ) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+( :7		
+move in: PROGRAM_LIST int main (
+-------------end----------------
+
+-------------72----------------
+) { int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :8		
+move in: PROGRAM_LIST int main ( )
+-------------end----------------
+
+-------------73----------------
+{ int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+{ :9		
+move in: PROGRAM_LIST int main ( ) {
+-------------end----------------
+
+-------------74----------------
+int a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+int :14		
+move in: PROGRAM_LIST int main ( ) { int
+-------------end----------------
+
+-------------75----------------
+a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :1048584		
+reduce: TYPE_SPECIFIER->int 
+PROGRAM_LIST int main ( ) { TYPE_SPECIFIER
+-------------end----------------
+
+-------------76----------------
+a [ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :30		
+move in: PROGRAM_LIST int main ( ) { TYPE_SPECIFIER a
+-------------end----------------
+
+-------------77----------------
+[ 100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+[ :50		
+move in: PROGRAM_LIST int main ( ) { TYPE_SPECIFIER a [
+-------------end----------------
+
+-------------78----------------
+100 ] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+100 :77		
+move in: PROGRAM_LIST int main ( ) { TYPE_SPECIFIER a [ 100
+-------------end----------------
+
+-------------79----------------
+] ; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :109		
+move in: PROGRAM_LIST int main ( ) { TYPE_SPECIFIER a [ 100 ]
+-------------end----------------
+
+-------------80----------------
+; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :1048588		
+reduce: ID_LIST->id [ digit ] 
+PROGRAM_LIST int main ( ) { TYPE_SPECIFIER ID_LIST
+-------------end----------------
+
+-------------81----------------
+; if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+; :49		
+move in: PROGRAM_LIST int main ( ) { TYPE_SPECIFIER ID_LIST ;
+-------------end----------------
+
+-------------82----------------
+if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+if :1048583		
+reduce: DECLARATION->TYPE_SPECIFIER ID_LIST ; 
+PROGRAM_LIST int main ( ) { DECLARATION
+-------------end----------------
+
+-------------83----------------
+if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+if :1048582		
+reduce: DECLARATION_STATEMENT->DECLARATION 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT
+-------------end----------------
+
+-------------84----------------
+if ( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+if :25		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if
+-------------end----------------
+
+-------------85----------------
+( a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+( :44		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if (
+-------------end----------------
+
+-------------86----------------
+a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :1048625		
+reduce: M->
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M
+-------------end----------------
+
+-------------87----------------
+a [ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :105		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a
+-------------end----------------
+
+-------------88----------------
+[ 10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+[ :136		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [
+-------------end----------------
+
+-------------89----------------
+10 ] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+10 :70		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ 10
+-------------end----------------
+
+-------------90----------------
+] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ F
+-------------end----------------
+
+-------------91----------------
+] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ T
+-------------end----------------
+
+-------------92----------------
+] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ E
+-------------end----------------
+
+-------------93----------------
+] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ EXPRESSION
+-------------end----------------
+
+-------------94----------------
+] == 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+] :179		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M a [ EXPRESSION ]
+-------------end----------------
+
+-------------95----------------
+== 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+== :1048609		
+reduce: F->id [ EXPRESSION ] 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M F
+-------------end----------------
+
+-------------96----------------
+== 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+== :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M T
+-------------end----------------
+
+-------------97----------------
+== 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+== :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M E
+-------------end----------------
+
+-------------98----------------
+== 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+== :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION
+-------------end----------------
+
+-------------99----------------
+== 1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+== :129		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION ==
+-------------end----------------
+
+-------------100----------------
+1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+1 :1048619		
+reduce: RELATION_OP->== 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP
+-------------end----------------
+
+-------------101----------------
+1 ) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+1 :56		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP 1
+-------------end----------------
+
+-------------102----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP F
+-------------end----------------
+
+-------------103----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP T
+-------------end----------------
+
+-------------104----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP E
+-------------end----------------
+
+-------------105----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M EXPRESSION RELATION_OP EXPRESSION
+-------------end----------------
+
+-------------106----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :1048614		
+reduce: RELATION_EXPRESSION->EXPRESSION RELATION_OP EXPRESSION 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION
+-------------end----------------
+
+-------------107----------------
+) a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+) :133		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION )
+-------------end----------------
+
+-------------108----------------
+a [ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+a :24		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a
+-------------end----------------
+
+-------------109----------------
+[ 10 ] = 2 ; else a [ 10 ] = 1 ; } #
+[ :43		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [
+-------------end----------------
+
+-------------110----------------
+10 ] = 2 ; else a [ 10 ] = 1 ; } #
+10 :70		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ 10
+-------------end----------------
+
+-------------111----------------
+] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ F
+-------------end----------------
+
+-------------112----------------
+] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ T
+-------------end----------------
+
+-------------113----------------
+] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ E
+-------------end----------------
+
+-------------114----------------
+] = 2 ; else a [ 10 ] = 1 ; } #
+] :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ EXPRESSION
+-------------end----------------
+
+-------------115----------------
+] = 2 ; else a [ 10 ] = 1 ; } #
+] :94		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) a [ EXPRESSION ]
+-------------end----------------
+
+-------------116----------------
+= 2 ; else a [ 10 ] = 1 ; } #
+= :1048612		
+reduce: LEFT_VALUE->id [ EXPRESSION ] 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE
+-------------end----------------
+
+-------------117----------------
+= 2 ; else a [ 10 ] = 1 ; } #
+= :32		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE =
+-------------end----------------
+
+-------------118----------------
+2 ; else a [ 10 ] = 1 ; } #
+2 :38		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE = 2
+-------------end----------------
+
+-------------119----------------
+; else a [ 10 ] = 1 ; } #
+; :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE = F
+-------------end----------------
+
+-------------120----------------
+; else a [ 10 ] = 1 ; } #
+; :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE = T
+-------------end----------------
+
+-------------121----------------
+; else a [ 10 ] = 1 ; } #
+; :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE = E
+-------------end----------------
+
+-------------122----------------
+; else a [ 10 ] = 1 ; } #
+; :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) LEFT_VALUE = EXPRESSION
+-------------end----------------
+
+-------------123----------------
+; else a [ 10 ] = 1 ; } #
+; :1048610		
+reduce: ASSIGN_EXPRESSION->LEFT_VALUE = EXPRESSION 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) ASSIGN_EXPRESSION
+-------------end----------------
+
+-------------124----------------
+; else a [ 10 ] = 1 ; } #
+; :171		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) ASSIGN_EXPRESSION ;
+-------------end----------------
+
+-------------125----------------
+else a [ 10 ] = 1 ; } #
+else :1048595		
+reduce: STATEMENT->ASSIGN_EXPRESSION ; 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT
+-------------end----------------
+
+-------------126----------------
+else a [ 10 ] = 1 ; } #
+else :1048625		
+reduce: M->
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M
+-------------end----------------
+
+-------------127----------------
+else a [ 10 ] = 1 ; } #
+else :189		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else
+-------------end----------------
+
+-------------128----------------
+a [ 10 ] = 1 ; } #
+a :24		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a
+-------------end----------------
+
+-------------129----------------
+[ 10 ] = 1 ; } #
+[ :43		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [
+-------------end----------------
+
+-------------130----------------
+10 ] = 1 ; } #
+10 :70		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ 10
+-------------end----------------
+
+-------------131----------------
+] = 1 ; } #
+] :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ F
+-------------end----------------
+
+-------------132----------------
+] = 1 ; } #
+] :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ T
+-------------end----------------
+
+-------------133----------------
+] = 1 ; } #
+] :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ E
+-------------end----------------
+
+-------------134----------------
+] = 1 ; } #
+] :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ EXPRESSION
+-------------end----------------
+
+-------------135----------------
+] = 1 ; } #
+] :94		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else a [ EXPRESSION ]
+-------------end----------------
+
+-------------136----------------
+= 1 ; } #
+= :1048612		
+reduce: LEFT_VALUE->id [ EXPRESSION ] 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE
+-------------end----------------
+
+-------------137----------------
+= 1 ; } #
+= :32		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE =
+-------------end----------------
+
+-------------138----------------
+1 ; } #
+1 :38		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE = 1
+-------------end----------------
+
+-------------139----------------
+; } #
+; :1048607		
+reduce: F->digit 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE = F
+-------------end----------------
+
+-------------140----------------
+; } #
+; :1048605		
+reduce: T->F 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE = T
+-------------end----------------
+
+-------------141----------------
+; } #
+; :1048602		
+reduce: E->T 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE = E
+-------------end----------------
+
+-------------142----------------
+; } #
+; :1048599		
+reduce: EXPRESSION->E 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else LEFT_VALUE = EXPRESSION
+-------------end----------------
+
+-------------143----------------
+; } #
+; :1048610		
+reduce: ASSIGN_EXPRESSION->LEFT_VALUE = EXPRESSION 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else ASSIGN_EXPRESSION
+-------------end----------------
+
+-------------144----------------
+; } #
+; :31		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else ASSIGN_EXPRESSION ;
+-------------end----------------
+
+-------------145----------------
+} #
+} :1048595		
+reduce: STATEMENT->ASSIGN_EXPRESSION ; 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT
+-------------end----------------
+
+-------------146----------------
+} #
+} :1048621		
+reduce: SELECTION_STATEMENT->if ( M RELATION_EXPRESSION ) STATEMENT M else STATEMENT 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT SELECTION_STATEMENT
+-------------end----------------
+
+-------------147----------------
+} #
+} :1048597		
+reduce: STATEMENT->SELECTION_STATEMENT 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT STATEMENT
+-------------end----------------
+
+-------------148----------------
+} #
+} :1048593		
+reduce: STATEMENT_LIST->STATEMENT 
+PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT STATEMENT_LIST
+-------------end----------------
+
+-------------149----------------
+} #
+} :41		
+move in: PROGRAM_LIST int main ( ) { DECLARATION_STATEMENT STATEMENT_LIST }
+-------------end----------------
+
+-------------150----------------
+#
+# :1048580		
+reduce: PROGRAM->int id ( ) { DECLARATION_STATEMENT STATEMENT_LIST } 
+PROGRAM_LIST PROGRAM
+-------------end----------------
+
+-------------151----------------
+#
+# :1048578		
+reduce: PROGRAM_LIST->PROGRAM_LIST PROGRAM 
+PROGRAM_LIST
+-------------end----------------
+
+-------------152----------------
+#
+# :1048577		
+reduce: S->PROGRAM_LIST 
+S
+-------------end----------------
+
+-------------153----------------
 #
 # :Yeah!

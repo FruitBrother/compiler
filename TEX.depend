@@ -1,15 +1,5 @@
 # depslib dependency file v1.0
-1492068691 source:d:\tex\4.13\tex\main.cpp
-	<iostream>
-	<fstream>
-	<sstream>
-	<algorithm>
-	<vector>
-	<stack>
-	<map>
-	<set>
-
-1492099162 source:c:\users\lining\desktop\tex\4.13\tex\main.cpp
+1492133459 source:c:\users\lining\desktop\compiler\syntactic_analyzer.cpp
 	<iostream>
 	<fstream>
 	<sstream>
